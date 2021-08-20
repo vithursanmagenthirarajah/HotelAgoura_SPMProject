@@ -10,6 +10,7 @@ import AddFoodItem from './Vithursan/AddFoodItem';
 import EmployeeList from './Shanghavi/EmployeeList';
 import CreateEmployee from './Shanghavi/CreateEmployee';
 import UpdateEmployee from './Shanghavi/UpdateEmployee';
+import ViewEmployee from './Shanghavi/ViewEmployee';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path = "/getemployees" component = {EmployeeList}></Route>
             <Route path = "/addemployee/:id" component = {CreateEmployee}></Route>
             <Route path = "/updateemployee/:id" component = {UpdateEmployee}></Route>
+            <Route path = "/viewemployee/:id" component = {ViewEmployee}></Route>
        
         </Switch>
       </div>

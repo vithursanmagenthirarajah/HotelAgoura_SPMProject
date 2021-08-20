@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService';
+import EmployeeService from './services/EmployeeService';
 
 class UpdateEmployeeComponent extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class UpdateEmployeeComponent extends Component {
                 lastName: employee.lastName,
                 dob: employee.dob,
                 contactno: employee.contactno,
-                emailId: employee.lastName,
+                emailId: employee.emailId,
                 address: employee.address,
                 position: employee.position,
                 department: employee.department,
@@ -86,7 +86,7 @@ class UpdateEmployeeComponent extends Component {
 
 
     cancel(){
-        this.props.history.push('/getmployees');
+        this.props.history.push('/getemployees');
     }
 
 
@@ -97,7 +97,7 @@ class UpdateEmployeeComponent extends Component {
                    <div className = "container">
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h3 className="text-center">Update Employee Details</h3>
+                                <h4 className="text-center">Update Employee Details</h4>
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
@@ -105,42 +105,57 @@ class UpdateEmployeeComponent extends Component {
                                             <input placeholder="First Name" name="firstName" className="form-control" 
                                                 value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
                                             <label> Last Name </label>
                                             <input placeholder="Last Name" name="lastName" className="form-control" 
                                                 value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                                         </div>
+                                        <br></br>
                                        
                                         <div className = "form-group">
                                             <label> Date of birth</label>
-                                            <input placeholder="date of birth" name="date of birth" className="form-control" 
+                                            <input type="date" placeholder="date of birth" name="date of birth" className="form-control" 
                                                 value={this.state.dob} onChange={this.changedobHandler}/>
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
                                             <label> Contact Number </label>
                                             <input placeholder="Contact Number" name="Contact Number" className="form-control" 
                                                 value={this.state.contactno} onChange={this.changecontactnoHandler}/>
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
                                             <label> Email Id </label>
                                             <input placeholder="Email Address" name="emailId" className="form-control" 
-                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
+                                                value={this.state.emailId} onChange={this.changeemailIdHandler}/>
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
                                             <label> Address </label>
                                             <input placeholder="Address" name="Address" className="form-control" 
                                                 value={this.state.address} onChange={this.changeaddressHandler}/>
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
                                             <label> Position </label>
                                             <input placeholder="Position" name="Position" className="form-control" 
                                                 value={this.state.position} onChange={this.changepositionHandler}/>
                                         </div>
-                                        <div className = "form-group">
+                                        <br></br>
+                                        <div className = "form-group" >
                                             <label> Department </label>
-                                            <input placeholder="Department" name="Department" className="form-control" 
-                                                value={this.state.department} onChange={this.changedepartmentHandler}/>
+                                            <select  className="form-control" value={this.state.department} onChange={this.changedepartmentHandler}>
+                                            <input placeholder="Department" name="Department"  />     
+                                                <option>choose</option>
+                                                <option>HR</option>
+                                                <option>Account</option>
+                                                <option>Food</option>
+                                                <option>Room</option>
+                                                </select>
+    
                                         </div>
+                                        <br></br>
 
 
                                         <button className="btn btn-success" onClick={this.updateEmployee}>Save</button>
