@@ -6,8 +6,10 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 //import
 //import Sample from "./Vithursan/sample.jsx"
 import AddFoodItem from './Vithursan/AddFoodItem';
-import ViewFooditem from './Vithursan/ViewFooditem';
-
+// import ViewFooditem from './Vithursan/ViewFooditem';
+import EmployeeList from './Shanghavi/EmployeeList';
+import CreateEmployee from './Shanghavi/CreateEmployee';
+import UpdateEmployee from './Shanghavi/UpdateEmployee';
 
 
 function App() {
@@ -16,7 +18,12 @@ function App() {
     <Router>
       <div className="container">
         <Switch> 
-            <Route path='/' exact={true} component={AddFoodItem}/>
+            <Route path='/' exact={true} component={EmployeeList}/>
+            <Route path = "/addfood" component = {AddFoodItem}></Route>
+            <Route path = "/getemployees" component = {EmployeeList}></Route>
+            <Route path = "/addemployee/:id" component = {CreateEmployee}></Route>
+            <Route path = "/updateemployee/:id" component = {UpdateEmployee}></Route>
+       
         </Switch>
       </div>
     </Router>
