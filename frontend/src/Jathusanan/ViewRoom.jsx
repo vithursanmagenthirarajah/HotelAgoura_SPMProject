@@ -14,6 +14,7 @@ export default class ViewFooditem extends Component {
       .get("http://localhost:8080/api/Rooms/get")
       .then((response) => {
         this.setState({ Rooms: response.data });
+        console.log(this.state.Rooms);
       })
       .catch((error) => {
         console.log(error);
@@ -45,7 +46,7 @@ export default class ViewFooditem extends Component {
                 <tr key={SingleRoom.id}>
                   <td>
                     <img
-                      src={SingleRoom.image_path}
+                      src={`http://localhost:8080/Images/${SingleRoom.image}`}
                       alt=""
                       height="150"
                       width="150"

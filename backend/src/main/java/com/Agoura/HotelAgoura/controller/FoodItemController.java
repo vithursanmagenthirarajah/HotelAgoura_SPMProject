@@ -60,7 +60,7 @@ public class FoodItemController {
 			FoodItem FItem = FoodItemRepository.findById(id)
 					.orElseThrow(() -> new ResourceNotFoundException("FoodItem not exist with id :" + id));
 			
-			FItem.setFoodItemName(FoodItemDetails.getFoodItemName());
+			FItem.setFoodItemName(FoodItemDetails.getFoodItemName()); 
 			FItem.setPrice(FoodItemDetails.getPrice());
 			FItem.setDescription(FoodItemDetails.getDescription());
 			FItem.setCategory(FoodItemDetails.getCategory());

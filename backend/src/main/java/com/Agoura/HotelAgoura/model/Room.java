@@ -18,7 +18,7 @@ public class Room {
 	@Column(name = "room_desc", nullable = true)
 	private String room_desc;
 	@Column(name = "beds", nullable = true)
-	private int beds;
+	private String beds;
 	@Column(name = "imagePath", nullable = true)
 	private String image;
 	@Column(name = "bathrooms", nullable = true)
@@ -68,11 +68,11 @@ public class Room {
 
 	
 
-	public int getBeds() {
+	public String getBeds() {
 		return beds;
 	}
 
-	public void setBeds(int beds) {
+	public void setBeds(String beds) {
 		this.beds = beds;
 	}
 
@@ -83,7 +83,7 @@ public class Room {
 		
 	}
 
-	public Room(Long rid, String type, String room_desc, int beds, String image, String bathrooms) {
+	public Room(Long rid, String type, String room_desc, String beds, String image, String bathrooms) {
 		super();
 		this.rid = rid;
 		this.type = type;
