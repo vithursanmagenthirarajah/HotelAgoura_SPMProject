@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
+
 export default class ViewFooditem extends Component {
     constructor(props) {
         super(props)
-
+        this.deleteFoodItemDetails = this.deleteFoodItemDetails.bind(this);
         this.state = {
             //id: this.props.match.params.id,
             FoodItem: []
@@ -13,7 +14,7 @@ export default class ViewFooditem extends Component {
 
     componentDidMount(){
         axios
-      .get("http://localhost:8080/api/FoodItem/get")
+      .get("http://localhost:8090/api/FoodItem/get")
       .then((response) => {
         this.setState({ FoodItem: response.data });
       })
@@ -25,6 +26,17 @@ export default class ViewFooditem extends Component {
         // })
     }
 
+    deleteFoodItemDetails(id) {
+        axios
+          .delete("http://localhost:8090/api/FoodItem/delete/" + id)
+          .then((response) => {
+            console.log(response.data);
+          });
+    
+        this.setState({
+            FoodItem: this.state.FoodItem.filter((el) => el.id !== id),
+        });
+      }
     render() {
         return (
             <div>
@@ -49,13 +61,14 @@ export default class ViewFooditem extends Component {
                                this.state.FoodItem.map(
                                    Food => 
                                    <tr key = {Food.id}>
-                                        <td><img src={ Food.path} alt="" height="150" width="150"/></td> 
+                                        <td><img src={Food.path} alt="" height="150" width="150"/></td> 
                                         <td> { Food.foodItemName} </td>   
                                         <td> {Food.price}</td>
                                         <td> {Food.description}</td>
                                         <td> {Food.category}</td>
                                         <td>
-                                          
+                                        <button style={{marginLeft: "10px"}} onClick={ () => this.deleteFoodItemDetails(Food.id)} className="btn btn-danger">Delete </button>
+                                        <Link to="/update"><button style={{marginLeft: "10px"}}  className="btn btn-info">View </button></Link>
                                         </td>
                                    </tr>
                                )

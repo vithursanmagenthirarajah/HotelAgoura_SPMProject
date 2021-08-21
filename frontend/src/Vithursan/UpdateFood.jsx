@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { Col } from 'react-bootstrap';
 import axios from 'axios';
-export default class AddFoodItem extends Component {
+
+export default class UpdateFood extends Component {
+
     constructor(props) {
         super(props);
     
@@ -25,7 +27,23 @@ export default class AddFoodItem extends Component {
             path:""
         };
       }
-    
+      componentDidMount() {
+        axios
+          .get("http://localhost:8090/api/FoodItem/get/" + this.props.match.params.id)
+          .then((response) => {
+            this.setState({
+                foodItemName: response.data.foodItemName,
+                price: response.data.price,
+                description: response.data.description,
+                category: response.data.category,
+                path: response.data.path,
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
       onChangeFoodItemName(e) {
         this.setState({
             foodItemName: e.target.value,
@@ -80,28 +98,28 @@ export default class AddFoodItem extends Component {
         }
         
         axios
-          .post("http://localhost:8090/api/FoodItem/add", formdata)
+          .put("http://localhost:8090/api/FoodItem/update/"+this.props.match.params.id, formdata)
           .then((res) => {
             console.log(res.data);
            
           });
     
-        this.setState({
-            foodItemName:"",
-            price:"",
-            description:"",
-            category:"",
-            //path:""
-        });
+        // this.setState({
+        //     foodItemName:"",
+        //     price:"",
+        //     description:"",
+        //     category:"",
+        //     //path:""
+        // });
     
-        alert("Food added successfully");
+        alert("Food Updated successfully");
        
       }
 
     render() {
         return (
             <div>
-
+            <h1>Update Food Items</h1>
             <Form onSubmit={this.onSubmit} class="form">
 
             <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -179,8 +197,8 @@ export default class AddFoodItem extends Component {
         </Button>
 
         </Form>
-
             </div>
         )
     }
 }
+
