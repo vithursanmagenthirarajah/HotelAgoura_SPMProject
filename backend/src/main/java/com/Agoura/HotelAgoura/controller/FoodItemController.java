@@ -1,21 +1,29 @@
 package com.Agoura.HotelAgoura.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Agoura.HotelAgoura.exception.*;
 import com.Agoura.HotelAgoura.repository.*;
@@ -31,11 +39,28 @@ public class FoodItemController {
 	@Autowired
 	private FoodItemRepository FoodItemRepository;
 	
-	 
+	@Value("${file.upload-dir}")
+	String FILE_DIRECTORY;
+	
 	// Add food items
+//		@PostMapping("/add")
+//		public FoodItem createItem(@RequestBody FoodItem FoodItem) {
+//			return FoodItemRepository.save(FoodItem);
+//		}
+		
 		@PostMapping("/add")
-		public FoodItem createItem(@RequestBody FoodItem FoodItem) {
+		public FoodItem fileUpload(@RequestParam("File") MultipartFile file,@ModelAttribute FoodItem FoodItem) throws IOException{
+			File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
+			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			System.out.println(fileName);
+			FoodItem.setPath(fileName);
+			
+		    myFile.createNewFile();
+			FileOutputStream fos =new FileOutputStream(myFile);
+			fos.write(file.getBytes());
+			fos.close();
 			return FoodItemRepository.save(FoodItem);
+			
 		}
 		
 		// get all food Items
@@ -53,21 +78,52 @@ public class FoodItemController {
 			return ResponseEntity.ok(FItem);
 		}
 		
-		// update Food Item
+//		// update Food Item
+//		
+//		@PutMapping("/update/{id}")
+//		public ResponseEntity<FoodItem> updateItem(@PathVariable Long id, @RequestBody FoodItem FoodItemDetails){
+//			FoodItem FItem = FoodItemRepository.findById(id) 
+//					.orElseThrow(() -> new ResourceNotFoundException("FoodItem not exist with id :" + id));
+//			
+//			FItem.setFoodItemName(FoodItemDetails.getFoodItemName());
+//			FItem.setPrice(FoodItemDetails.getPrice());
+//			FItem.setDescription(FoodItemDetails.getDescription());
+//			FItem.setCategory(FoodItemDetails.getCategory());
+//			FItem.setPath(FoodItemDetails.getPath());
+//			
+//			FoodItem updatedFoodItem = FoodItemRepository.save(FItem);
+//			return ResponseEntity.ok(updatedFoodItem);
+//		}
 		
 		@PutMapping("/update/{id}")
-		public ResponseEntity<FoodItem> updateItem(@PathVariable Long id, @RequestBody FoodItem FoodItemDetails){
-			FoodItem FItem = FoodItemRepository.findById(id)
-					.orElseThrow(() -> new ResourceNotFoundException("FoodItem not exist with id :" + id));
+		public FoodItem updateFood(@PathVariable("id") Long RoomID, @ModelAttribute FoodItem FoodItem, @RequestParam("File") MultipartFile file) throws IOException{
+			FoodItem FoodItem1 = FoodItemRepository.findById(RoomID).get();
+			if(Objects.nonNull(FoodItem.getFoodItemName()) && !"".equalsIgnoreCase(FoodItem.getFoodItemName())) {
+				FoodItem1.setFoodItemName(FoodItem.getFoodItemName());
+			}
+			if(Objects.nonNull(FoodItem.getPrice()) && !"".equalsIgnoreCase(FoodItem.getPrice())) {
+				FoodItem1.setPrice(FoodItem.getPrice());
+			}
+			if(Objects.nonNull(FoodItem.getDescription()) && !"".equalsIgnoreCase(FoodItem.getDescription())) {
+				FoodItem1.setDescription(FoodItem.getDescription());
+			}
+			if(Objects.nonNull(FoodItem.getCategory()) && !"".equalsIgnoreCase(FoodItem.getCategory())) {
+				FoodItem1.setCategory(FoodItem.getCategory());
+			}
+			File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
+			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			System.out.println(fileName);
+			FoodItem1.setPath(fileName);
 			
-			FItem.setFoodItemName(FoodItemDetails.getFoodItemName());
-			FItem.setPrice(FoodItemDetails.getPrice());
-			FItem.setDescription(FoodItemDetails.getDescription());
-			FItem.setCategory(FoodItemDetails.getCategory());
-			FItem.setPath(FoodItemDetails.getPath());
+		    myFile.createNewFile();
+			FileOutputStream fos =new FileOutputStream(myFile);
+			fos.write(file.getBytes());
+			fos.close();
 			
-			FoodItem updatedFoodItem = FoodItemRepository.save(FItem);
-			return ResponseEntity.ok(updatedFoodItem);
+			
+			return FoodItemRepository.save(FoodItem);
+			
+			
 		}
 		
 		// delete food item
