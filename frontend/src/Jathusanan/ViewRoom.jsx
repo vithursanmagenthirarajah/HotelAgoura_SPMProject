@@ -3,6 +3,7 @@ import axios from "axios";
 export default class ViewFooditem extends Component {
   constructor(props) {
     super(props);
+    this.passData = this.passData.bind(this);
 
     this.state = {
       Rooms: [],
@@ -22,6 +23,12 @@ export default class ViewFooditem extends Component {
     // ItemService.getItemsById(this.state.id).then( res => {
     //     this.setState({item: res.data});
     // })
+  }
+
+  
+
+  passData(SingleRoom){
+    axios.get("http:localhost:8080/api/Rooms")
   }
 
   render() {
@@ -55,7 +62,7 @@ export default class ViewFooditem extends Component {
                   <td> {SingleRoom.room_desc} </td>
                   <td> {SingleRoom.beds}</td>
                   <td> {SingleRoom.bathrooms}</td>
-                  <td></td>
+                  <td><a href={'/update/'+SingleRoom.rid}><button>Hi</button></a></td>
                 </tr>
               ))}
             </tbody>

@@ -3,13 +3,17 @@ package com.Agoura.HotelAgoura.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Agoura.HotelAgoura.exception.ResourceNotFoundException;
 import com.Agoura.HotelAgoura.model.FoodItem;
 import com.Agoura.HotelAgoura.model.Room;
 import com.Agoura.HotelAgoura.repository.RoomRepo;
@@ -92,6 +97,17 @@ public class RoomController {
 			return rp.save(room1);
 			
 			
+		}
+		
+		@DeleteMapping("/delete/{id}")
+		public ResponseEntity<Map<String, Boolean>> deleteRoom(@PathVariable Long id){
+			Room room = rp.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Item not exist with id :" + id));
+			
+			rp.delete(room);
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("deleted", Boolean.TRUE);
+			return ResponseEntity.ok(response);
 		}
 		
 			
