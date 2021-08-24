@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import EmployeeService from './services/EmployeeService';
 
+
 class CreateEmployee extends Component {
     constructor(props) {
         super(props)
@@ -49,7 +50,7 @@ class CreateEmployee extends Component {
                     address: employee.address,
                     position: employee.position,
                     department: employee.department,
-
+                   
 
                 });
             });
@@ -64,11 +65,15 @@ class CreateEmployee extends Component {
      
         if(this.state.id === '_add'){
             EmployeeService.createEmployee(employee).then(res =>{
+                alert("Employee Added Successfully");
                 this.props.history.push('/getemployees');
+                
             });
         }else{
             EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+                
                 this.props.history.push('/getemployees');
+               
             });
         }
     }
@@ -102,15 +107,17 @@ class CreateEmployee extends Component {
 
 
     cancel(){
+        
         this.props.history.push('/getemployees');
     }
 
+  
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Employee Details</h3>
+            return <h4 className="text-center">Add Employee Details</h4>
         }else{
-            return <h3 className="text-center">Update Employee Details</h3>
+            return <h4 className="text-center">Update Employee Details</h4>
         }
     }
 
@@ -130,17 +137,17 @@ class CreateEmployee extends Component {
                                 }
                                
                                 <div className = "card-body">
-                                    <form >
+                                    <form onSubmit={this.saveOrUpdateEmployee}>
                                         <div className = "form-group">
                                             <label> First Name </label>
-                                            <input placeholder="First Name" name="firstName" className="form-control" 
-                                                value={this.state.firstName} onChange={this.changeFirstNameHandler} required={true}/>
+                                            <input placeholder="Enter First Name" name="firstName" className="form-control" 
+                                            value={this.state.firstName} onChange={this.changeFirstNameHandler} required={true}/>
                                          
                                         </div>
                                         <br></br>
                                         <div className = "form-group">
                                             <label> Last Name </label>
-                                            <input placeholder="Last Name" name="lastName" className="form-control" 
+                                            <input placeholder="Enter Last Name" name="lastName" className="form-control" 
                                                 value={this.state.lastName} onChange={this.changeLastNameHandler} required={true}/>
                                         </div>
                                         <br></br>
@@ -152,33 +159,33 @@ class CreateEmployee extends Component {
                                         <br></br>
                                         <div className = "form-group">
                                             <label> Contact Number </label>
-                                            <input placeholder="Contact Number" name="Contact Number" className="form-control" 
-                                                value={this.state.contactno} onChange={this.changecontactnoHandler} required={true}/>
+                                            <input placeholder="Enter Contact Number" name="Contact Number" className="form-control" 
+                                                value={this.state.contactno} onChange={this.changecontactnoHandler} required pattern="[0-9]{10}" title="Invalid Phone Number"/>
                                         </div>
                                         <br></br>
                                         <div className = "form-group">
                                             <label> Email Id </label>
-                                            <input placeholder="Email Address" name="emailId" className="form-control" 
-                                                value={this.state.emailId} onChange={this.changeemailIdHandler} required={true}/>
+                                            <input placeholder="Enter Email Address" name="emailId" className="form-control" 
+                                                value={this.state.emailId} onChange={this.changeemailIdHandler} required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address"/>
                                         </div>
                                         <br></br>
                                         <div className = "form-group">
                                             <label> Address </label>
-                                            <input placeholder="Address" name="Address" className="form-control" 
+                                            <input placeholder="Enter Address" name="Address" className="form-control" 
                                                 value={this.state.address} onChange={this.changeaddressHandler} required={true}/>
                                         </div>
                                         <br></br>
                                         <div className = "form-group">
                                             <label> Position </label>
-                                            <input placeholder="Position" name="Position" className="form-control" 
+                                            <input placeholder="Enter Position" name="Position" className="form-control" 
                                                 value={this.state.position} onChange={this.changepositionHandler} required={true}/>
                                         </div>
                                         <br></br>
                                         <div className = "form-group" >
                                             <label> Department </label>
                                             <select  className="form-control" value={this.state.department} onChange={this.changedepartmentHandler}>
-                                            <input placeholder="Department" name="Department"  />     
-                                                <option>choose</option>
+                                            <input placeholder="Department" name="Department" />     
+                                                <option>Choose....</option>
                                                 <option>HR</option>
                                                 <option>Account</option>
                                                 <option>Food</option>
@@ -186,9 +193,11 @@ class CreateEmployee extends Component {
                                                 </select>
     
                                         </div>
-<br></br>
+                                        <br></br>
 
-                                        <button className="btn btn-success" onClick={this.saveOrUpdateEmployee} >Save</button>
+                                        
+                                        <button  className="btn btn-success" style={{marginLeft: "250px"}}>Save</button>
+                                       
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>

@@ -16,6 +16,10 @@ class ViewEmployee extends Component {
             this.setState({employee: res.data});
         })
     }
+    cancel(){
+        
+        this.props.history.push('/getemployees');
+    }
 
     render() {
         return (
@@ -26,47 +30,48 @@ class ViewEmployee extends Component {
 
                     <div className = "card-body">
                         <div className = "row">
-                            <label>First Name : </label>
-                            <div> { this.state.employee.firstName }</div>
+                            <label>First Name : { this.state.employee.firstName }</label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Last Name : </label>
-                            <div> { this.state.employee.lastName }</div>
+                            <label>Last Name :  { this.state.employee.lastName }</label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Date of birth : </label>
-                            <div> { this.state.employee.dob }</div>
+                            <label>Date of birth : { this.state.employee.dob } </label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Contactno : </label>
-                            <div> { this.state.employee.contactno }</div>
+                            <label>Contactno : { this.state.employee.contactno }</label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label> Employee Email ID : </label>
-                            <div> { this.state.employee.emailId }</div>
+                            <label> Employee Email ID :  { this.state.employee.emailId }</label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Address : </label>
-                            <div> { this.state.employee.address }</div>
+                            <label>Address : { this.state.employee.address }</label>
+                            
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Position : </label>
-                            <div> { this.state.employee.position}</div>
+                            <label>Position :  { this.state.employee.position}</label>
+                           
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label>Department : </label>
-                            <div> { this.state.employee.department}</div>
+                            <label>Department :   { this.state.employee.department}</label>
+                          
                         </div>
                     </div>
-
+                   
                 </div>
+                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "600px",width:"90px"}}>Cancel</button>
             </div>
         )
     }

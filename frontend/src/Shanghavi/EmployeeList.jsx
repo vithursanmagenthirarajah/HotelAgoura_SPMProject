@@ -17,6 +17,8 @@ class EmployeeList extends Component {
     deleteEmployee(id){
         EmployeeService.deleteEmployee(id).then( res => {
             this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
+
+            
         });
     }
 
@@ -46,7 +48,7 @@ class EmployeeList extends Component {
                  <br></br>
                  <div className = "row">
                     
-                <button className="button" onClick={this.addEmployee} style={{width:"280px",height:"40px",backgroundColor:"#69133C",color:"white",fontSize:"20px"}}> Add Employee Details</button>
+                <button className="btn" onClick={this.addEmployee} style={{width:"230px",height:"40px",backgroundColor:"#c73761",color:"white",fontSize:"18px"}}> Add Employee Details</button>
                  </div>
                  <br></br>
                  <div className = "row">
@@ -62,7 +64,7 @@ class EmployeeList extends Component {
                                     <th>Address</th>
                                     <th>Position</th>
                                     <th>Department</th>
-                                    <th>-------------Actions--------------- </th>
+                                    <th className="text-center">Actions</th>
                                 
                                 </tr>
                             </thead>
@@ -80,9 +82,9 @@ class EmployeeList extends Component {
                                              <td> {employee.position}</td>
                                              <td> {employee.department}</td>
                                              <td>
-                                                 <button onClick={ () => this.editEmployee(employee.id)} className="btn btn-info">Update </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewEmployee(employee.id)} className="btn btn-info">View </button>
+                                                 <button style={{marginLeft: "50px"}}onClick={ () => this.editEmployee(employee.id)} className="btn btn-info" >Update </button>
+                                                 <button style={{marginLeft: "15px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
+                                                 <button style={{marginLeft: "15px"}} onClick={ () => this.viewEmployee(employee.id)} className="btn btn-info">View </button>
                                              </td>
                                         </tr>
                                     )
