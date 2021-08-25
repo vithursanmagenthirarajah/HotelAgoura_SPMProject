@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import EmployeeService from './services/EmployeeService';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 class EmployeeList extends Component {
     constructor(props) {
@@ -16,8 +18,23 @@ class EmployeeList extends Component {
 
     deleteEmployee(id){
         EmployeeService.deleteEmployee(id).then( res => {
-            this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
 
+            confirmAlert({
+                title: 'Delete Employee',
+                message: 'Are you sure you want to delete this Employee Details?',
+                buttons: [
+                  {
+                    label: 'Yes',
+                    onClick: () => this.setState({employees: this.state.employees.filter(employee => employee.id !== id)})
+
+                  },
+                  {
+                    label: 'No',
+                    onClick: () =>this.props.history.push('/getemployees')
+                  }
+                ]
+              });
+            
             
         });
     }
@@ -43,7 +60,9 @@ class EmployeeList extends Component {
     render() {
         return (
             <div>
-                 <h2 className="text-center">Employees List</h2>
+                <br></br>
+                <br></br>
+                 <h2 className="text-center" style={{ color:"#753f4c"}}>Employee List</h2>
                  <br></br>
                  <br></br>
                  <div className = "row">
@@ -82,7 +101,7 @@ class EmployeeList extends Component {
                                              <td> {employee.position}</td>
                                              <td> {employee.department}</td>
                                              <td>
-                                                 <button style={{marginLeft: "50px"}}onClick={ () => this.editEmployee(employee.id)} className="btn btn-info" >Update </button>
+                                                 <button style={{marginLeft: "50px" }}onClick={ () => this.editEmployee(employee.id)} className="btn btn-info" >Update </button>
                                                  <button style={{marginLeft: "15px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
                                                  <button style={{marginLeft: "15px"}} onClick={ () => this.viewEmployee(employee.id)} className="btn btn-info">View </button>
                                              </td>

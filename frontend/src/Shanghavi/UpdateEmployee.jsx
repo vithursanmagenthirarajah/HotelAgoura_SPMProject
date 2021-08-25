@@ -158,7 +158,7 @@ class UpdateEmployeeComponent extends Component {
                                         <br></br>
 
 
-                                        <button className="btn btn-success" onClick={this.updateEmployee}>Save</button>
+                                        <button className="btn btn-success" onClick={this.updateEmployee} style={{marginLeft: "250px"}}>Save</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
