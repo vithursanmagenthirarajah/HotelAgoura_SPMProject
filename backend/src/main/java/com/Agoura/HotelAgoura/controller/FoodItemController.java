@@ -96,8 +96,8 @@ public class FoodItemController {
 //		}
 		
 		@PutMapping("/update/{id}")
-		public FoodItem updateFood(@PathVariable("id") Long RoomID, @ModelAttribute FoodItem FoodItem, @RequestParam("File") MultipartFile file) throws IOException{
-			FoodItem FoodItem1 = FoodItemRepository.findById(RoomID).get();
+		public FoodItem updateFood(@PathVariable("id") Long id, @ModelAttribute FoodItem FoodItem, @RequestParam("File") MultipartFile file) throws IOException{
+			FoodItem FoodItem1 = FoodItemRepository.findById(id).get();
 			if(Objects.nonNull(FoodItem.getFoodItemName()) && !"".equalsIgnoreCase(FoodItem.getFoodItemName())) {
 				FoodItem1.setFoodItemName(FoodItem.getFoodItemName());
 			}
@@ -121,7 +121,7 @@ public class FoodItemController {
 			fos.close();
 			
 			
-			return FoodItemRepository.save(FoodItem);
+			return FoodItemRepository.save(FoodItem1);
 			
 			
 		}
