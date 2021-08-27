@@ -66,6 +66,8 @@ public class FoodItemController {
 			FItem.setCategory(FoodItemDetails.getCategory());
 			FItem.setPath(FoodItemDetails.getPath());
 			
+			
+			
 			FoodItem updatedFoodItem = FoodItemRepository.save(FItem);
 			return ResponseEntity.ok(updatedFoodItem);
 		}

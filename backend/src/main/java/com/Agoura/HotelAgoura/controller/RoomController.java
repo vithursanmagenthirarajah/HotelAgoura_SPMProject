@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.Agoura.HotelAgoura.exception.ResourceNotFoundException;
 import com.Agoura.HotelAgoura.model.FoodItem;
@@ -43,18 +45,22 @@ public class RoomController {
 	private RoomRepo rp;
 	@Value("${file.upload-dir}")
 	String FILE_DIRECTORY;
+	
 	@PostMapping("/add")
 	public Room fileUpload(@RequestParam("File") MultipartFile file,@ModelAttribute Room room) throws IOException{
 		File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		System.out.println(fileName);
+		System.out.println(FILE_DIRECTORY);
 		room.setImage(fileName);
 		
 	    myFile.createNewFile();
 		FileOutputStream fos =new FileOutputStream(myFile);
 		fos.write(file.getBytes());
+		System.out.println(ServletUriComponentsBuilder.fromCurrentContextPath().path("/images/").path(file.getOriginalFilename()).toString());
 		fos.close();
 		return rs.saveRoom(room);
+		
 		
 	}
 	
@@ -82,6 +88,9 @@ public class RoomController {
 			}
 			if(Objects.nonNull(room.getRoom_desc()) && !"".equalsIgnoreCase(room.getRoom_desc())) {
 				room1.setRoom_desc(room.getRoom_desc());
+			}
+			if(Objects.nonNull(room.getPrice()) && !"".equalsIgnoreCase(room.getPrice())) {
+				room1.setPrice(room.getPrice());
 			}
 			File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());

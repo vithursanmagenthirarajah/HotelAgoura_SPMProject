@@ -23,9 +23,19 @@ public class Room {
 	private String image;
 	@Column(name = "bathrooms", nullable = true)
 	private String bathrooms;
+	@Column(name = "price", nullable = true)
+	private String price;
 	
 	//Getters and Setters
 	
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
 	public String getBathrooms() {
 		return bathrooms;
 	}
@@ -83,7 +93,7 @@ public class Room {
 		
 	}
 
-	public Room(Long rid, String type, String room_desc, String beds, String image, String bathrooms) {
+	public Room(Long rid, String type, String room_desc, String beds, String image, String bathrooms, String price) {
 		super();
 		this.rid = rid;
 		this.type = type;
@@ -91,7 +101,10 @@ public class Room {
 		this.beds = beds;
 		this.image = image;
 		this.bathrooms = bathrooms;
+		this.price = price;
 	}
+
+	
 
 	
 
