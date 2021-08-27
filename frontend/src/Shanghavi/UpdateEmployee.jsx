@@ -97,7 +97,7 @@ class UpdateEmployeeComponent extends Component {
                    <div className = "container">
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h4 className="text-center">Update Employee Details</h4>
+                                <h4 className="text-center" style={{color:"#053b4b"}}>Update Employee Details</h4>
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
@@ -158,7 +158,7 @@ class UpdateEmployeeComponent extends Component {
                                         <br></br>
 
 
-                                        <button className="btn btn-success" onClick={this.updateEmployee} style={{marginLeft: "250px"}}>Save</button>
+                                        <button className="btn" onClick={this.updateEmployee} style={{marginLeft: "250px",backgroundColor:"#0186ac", color:"white"}}>Save</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>

@@ -15,11 +15,12 @@ const Home = (props) => {
   
     return(
      
-    <div>
-           
+    <div >
+     
+           <div >
             <br></br>
             <br></br>
-            <h2 className="text-center" style={{ color:"#370411"}}>Admin Dashboard</h2>
+            <h2 className="text-center" style={{ color:"#053b4b"}}>Admin Dashboard</h2>
             <br/><br/><br/>
             <div style={{marginLeft:"60px"}}>
             <Row xs={1} md={3} className="g-4">
@@ -102,7 +103,7 @@ const Home = (props) => {
            </Link>
           </Col>
           </Row>
-          
+          </div>
           </div>
           </div>
           

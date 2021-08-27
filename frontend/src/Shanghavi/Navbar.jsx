@@ -24,15 +24,15 @@ import hotel from '../Shanghavi/Images/hotel1.jpg'
                         <br></br>
                         
                         <li className="navbar-item">
-                        <Link  className="nav-link">DINNING</Link>
+                        <Link  to="/HOME" className="nav-link">DINNING</Link>
                         </li>
                         <br></br>
                         <li className="navbar-item">
-                        <Link  className="nav-link">EVENT</Link>
+                        <Link to="/HOME" className="nav-link">EVENT</Link>
                         </li>
                         <br></br>
                         <li className="navbar-item">
-                        <Link  className="nav-link">ROOM</Link>
+                        <Link to="/HOME" className="nav-link">ROOM</Link>
                         </li>
                         <br></br>
                         
@@ -42,7 +42,7 @@ import hotel from '../Shanghavi/Images/hotel1.jpg'
                         <br></br>
                        
                         <li className="navbar-item">
-                        <Link className="nav-link">EXPENSE</Link>
+                        <Link to="/HOME" className="nav-link">EXPENSE</Link>
                         </li>
                         <br></br>
                     

@@ -62,12 +62,12 @@ class EmployeeList extends Component {
             <div>
                 <br></br>
                 <br></br>
-                 <h2 className="text-center" style={{ color:"#753f4c"}}>Employee List</h2>
+                 <h2 className="text-center" style={{ color:"#053b4b"}}>Employee List</h2>
                  <br></br>
                  <br></br>
                  <div className = "row">
                     
-                <button className="btn" onClick={this.addEmployee} style={{width:"230px",height:"40px",backgroundColor:"#c73761",color:"white",fontSize:"18px"}}> Add Employee Details</button>
+                <button className="btn" onClick={this.addEmployee} style={{width:"230px",height:"40px",backgroundColor:"#034d67",color:"white",fontSize:"18px"}}> Add Employee Details</button>
                  </div>
                  <br></br>
                  <div className = "row">

@@ -65,7 +65,6 @@ class CreateEmployee extends Component {
      
         if(this.state.id === '_add'){
             EmployeeService.createEmployee(employee).then(res =>{
-                alert("Employee Added Successfully");
                 this.props.history.push('/getemployees');
                 
             });
@@ -115,9 +114,9 @@ class CreateEmployee extends Component {
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h4 className="text-center">Add Employee Details</h4>
+            return <h4 className="text-center" style={{color:"#053b4b"}}>Add Employee Details</h4>
         }else{
-            return <h4 className="text-center">Update Employee Details</h4>
+            return <h4 className="text-center" style={{color:"053b4b"}}>Update Employee Details</h4>
         }
     }
 
@@ -196,7 +195,7 @@ class CreateEmployee extends Component {
                                         <br></br>
 
                                         
-                                        <button  className="btn btn-success" style={{marginLeft: "250px"}}>Save</button>
+                                        <button  className="btn " style={{marginLeft: "250px" ,backgroundColor:"#0186ac", color:"white"}}>Save</button>
                                        
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
