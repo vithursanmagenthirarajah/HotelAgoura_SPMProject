@@ -10,7 +10,7 @@ export default class FoodCard extends Component {
         super(props)
 
         this.state = {
-            //id: this.props.match.params.id,
+            // id: this.props.match.params.id,
             FoodItem: []
         }
     }
@@ -33,16 +33,15 @@ export default class FoodCard extends Component {
 
             <div>
             <br/> <br/>
-            <h1>Food Items</h1>
+            <h1 className="text-center" style={{color:"#0e7794"}}>Food Items</h1>
             <br/><br/>
             <Row xs={20} md={3} className="g-4">
             {
-                this.state.FoodItem.map(
-                    Food => 
+                this.state.FoodItem.map( Food => 
            
-            <Col> 
-            <Card key={Food.id} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={Food.path} />
+            <Col  key={Food.id} >
+            <Card style={{ width: '18rem',height:'27rem' }} className="text-center">
+                <Card.Img variant="top" src={`http://localhost:8090/images/${Food.path}`} width="50px" height="200px"/>
                     <Card.Body>
                         <Card.Title>{Food.foodItemName}</Card.Title>
                         <Card.Text>
@@ -54,7 +53,8 @@ export default class FoodCard extends Component {
                         <Card.Text>
                             {Food.price}
                         </Card.Text>
-              <Button variant="primary">Buy Now</Button>
+              <Button variant="#053b4b" style={{backgroundColor:"#053b4b", color:"white"}}>Buy Now</Button> {""} {""} {""} {""} 
+              <Button variant="#053b4b" style={{backgroundColor:"#053b4b", color:"white"}}>Add to Cart</Button>
                     </Card.Body>
           </Card>
           </Col>    

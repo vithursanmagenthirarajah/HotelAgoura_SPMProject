@@ -24,19 +24,20 @@ export default class UpdateFood extends Component {
             price:"",
             description:"",
             category:"",
-            path:""
+            path:"",
+            altimg: "",
         };
       }
       componentDidMount() {
         axios
           .get("http://localhost:8090/api/FoodItem/get/" + this.props.match.params.id)
-          .then((response) => {
+          .then((res) => {
             this.setState({
-                foodItemName: response.data.foodItemName,
-                price: response.data.price,
-                description: response.data.description,
-                category: response.data.category,
-                path: response.data.path,
+                foodItemName: res.data.foodItemName,
+                price: res.data.price,
+                description: res.data.description,
+                category: res.data.category,
+                path: res.data.path,
             });
           })
           .catch(function (error) {
@@ -70,7 +71,8 @@ export default class UpdateFood extends Component {
 
       onChangePath(e) {
         this.setState({
-          path: e.target.files[0],
+          path: URL.createObjectURL(e.target.files[0]),
+          altimg: e.target.files[0],
         });
       }
 
@@ -91,7 +93,7 @@ export default class UpdateFood extends Component {
         formdata.append("price", this.state.price);
         formdata.append("description", this.state.description);
         formdata.append("category", this.state.category);
-        formdata.append("File", this.state.path);
+        formdata.append("File", this.state.altimg);
 
         for (var value of formdata.values()) {
           console.log(value);
@@ -119,7 +121,13 @@ export default class UpdateFood extends Component {
     render() {
         return (
             <div>
-            <h1>Update Food Items</h1>
+
+            <br></br>
+            <h3 className="text-center" style={{color:"#0e7794"}}>Update Food Item Details</h3>
+
+
+<div className = "card col-md-6 offset-md-3 offset-md-3">
+<div className="container">
             <Form onSubmit={this.onSubmit} class="form">
 
             <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -134,7 +142,7 @@ export default class UpdateFood extends Component {
                   value={this.state.foodItemName} 
               />
             </Form.Group>
-
+         
             <Form.Group className="mb-3" controlId="formGroupPassword">
               <Form.Label>Price</Form.Label>
               <Form.Control 
@@ -144,24 +152,24 @@ export default class UpdateFood extends Component {
                   onChange={this.onChangePrice}  
                   value={this.state.price}/>
             </Form.Group>   
-
+       
             <Form.Label>Description</Form.Label>
             <FloatingLabel controlId="floatingTextarea2" label="Description" >
                 <Form.Control
                      as="textarea"
                      required={true} 
                      pattern="\w+.{10,}.[/\D/g]" 
-                     title="Food description should not contain numbers or symbols and must be largerthan 10 characters." 
+                     title="Food description should not contain numbers or symbols and must be larger than 10 characters." 
                      style={{ height: '100px' }}
                      onChange={this.onChangeDescription}  
                      value={this.state.description}
                  />
             </FloatingLabel>
-
+         
             <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Category</Form.Label>
-            <Form.Select  defaultValue=" Choose... "   required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
-              
+            <Form.Select    required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
+            <option>Choose ..</option>
             <option>Kottu</option>
               <option>Rice & Curry</option>
               <option>Briyanies</option>
@@ -181,7 +189,7 @@ export default class UpdateFood extends Component {
             </Form.Select>
           </Form.Group>
 
-          
+       
 
           <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Food Image</Form.Label>
@@ -190,13 +198,26 @@ export default class UpdateFood extends Component {
               onChange={this.onChangePath} 
               //value={this.state.path}
           />
+          <img
+          alt="Image Not Found"
+          height="150"
+          width="150"
+          src={"http://localhost:8090/Images/" + this.state.path}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = this.state.path;
+          }}
+        ></img>
         </Form.Group>
-
-        <Button variant="primary" type="submit">
+        <br></br>
+      
+        <Button className="btn" varient="black" type="submit" style={{marginLeft:"160px" , width:"200px", height:"40px",backgroundColor:"#053b4b", color:"white"}}>
         Submit
         </Button>
 
         </Form>
+            </div>
+            </div>
             </div>
         )
     }

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { Col } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 export default class AddFoodItem extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +18,7 @@ export default class AddFoodItem extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
-            id:this.props.match.params.id,
+           // id:this.props.match.params.id,
             foodItemName:"",
             price:"",
             description:"",
@@ -101,11 +102,17 @@ export default class AddFoodItem extends Component {
     render() {
         return (
             <div>
+            <br></br>
+            <br></br>
+            <h3 className="text-center" style={{color:"#0e7794"}}>Add Food Item Details</h3>
 
-            <Form onSubmit={this.onSubmit} class="form">
 
-            <Form.Group className="mb-3" controlId="formGroupEmail">
-              <Form.Label>Food Item Name</Form.Label>
+<div className = "card col-md-6 offset-md-3 offset-md-3">
+<div className="container">
+            <Form onSubmit={this.onSubmit} >
+
+            <Form.Group  controlId="formGroupEmail">
+            <Form.Label >Food Item Name</Form.Label>
               <Form.Control 
                   type="text" 
                   required={true} 
@@ -120,8 +127,9 @@ export default class AddFoodItem extends Component {
             <Form.Group className="mb-3" controlId="formGroupPassword">
               <Form.Label>Price</Form.Label>
               <Form.Control 
-                  type="currency" 
+                  type="number" 
                   required={true} 
+                  min="1"
                   placeholder="Price" 
                   onChange={this.onChangePrice}  
                   value={this.state.price}/>
@@ -142,9 +150,9 @@ export default class AddFoodItem extends Component {
 
             <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Category</Form.Label>
-            <Form.Select  defaultValue=" Choose... "   required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
-              
-            <option>Kottu</option>
+            <Form.Select     required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
+            <option >Choose ..</option>
+              <option>Kottu</option>
               <option>Rice & Curry</option>
               <option>Briyanies</option>
               <option>Naans & Chappathis</option>
@@ -173,13 +181,18 @@ export default class AddFoodItem extends Component {
               //value={this.state.path}
           />
         </Form.Group>
+        <br></br>
 
-        <Button variant="primary" type="submit">
+        <Button variant="#053b4b" type="submit" style={{marginLeft:"160px" , width:"200px", height:"40px",backgroundColor:"#053b4b", color:"white"}}> 
         Submit
-        </Button>
+        </Button> 
+        <br></br>
 
         </Form>
-
+        </div>
+       
+        </div>
+        <br></br>
             </div>
         )
     }
