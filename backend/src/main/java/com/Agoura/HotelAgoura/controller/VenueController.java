@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,7 +41,7 @@ import com.Agoura.HotelAgoura.repository.VenueRepo;
 //import antlr.StringUtils;
 
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("api/venue")
 public class VenueController {
@@ -125,7 +126,7 @@ public class VenueController {
 	
 	
 	
-	@RequestMapping("/addVenue")
+	@PostMapping("/addVenue")
 	public ResponseEntity<Object> fileUpload(@RequestParam("File") MultipartFile file,@ModelAttribute Venue venue) throws IOException{
 		
 		
@@ -147,5 +148,13 @@ public class VenueController {
 		
 		
 	}
+	
+//	@GetMapping("/Images/{id}")
+//	public String getImages(@PathVariable int id) {
+//		Venue venue = repo.findById(id)
+//						.orElseThrow(()-> new ResourceNotFoundException("Venue Not Found"));
+//		
+//		return FILE_DIRECTORY + venue.getImg();
+//	}
 
 }
