@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -137,5 +138,19 @@ public class FoodItemController {
 			response.put("deleted", Boolean.TRUE);
 			return ResponseEntity.ok(response);
 		}
+		
+		//search food items
+		  @GetMapping("/search")
+		    public List<FoodItem> getParts(@Param("searchKey") String searchKey){
+
+		        if(searchKey!=null){
+
+//		            List result = repo.findAll((searchKey));
+//		            System.out.println(result);
+		            return FoodItemRepository.findAll(searchKey);
+
+		        }
+		        return FoodItemRepository.findAll();
+		    }
 		
 }
