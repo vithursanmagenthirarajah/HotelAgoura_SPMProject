@@ -20,7 +20,7 @@ public class FoodItem {
 	private String foodItemName;
 
 	@Column(name = "FItem_Price")
-	private double price;
+	private String price;
 	
 	@Column(name = "FItem_Description")
 	private String description;
@@ -41,7 +41,7 @@ public class FoodItem {
 
 
 
-	public FoodItem(long id, String foodItemName, double price, String description, String category, String path) {
+	public FoodItem(long id, String foodItemName, String price, String description, String category, String path) {
 		super();
 		this.id = id;
 		this.foodItemName = foodItemName;
@@ -82,14 +82,14 @@ public class FoodItem {
 
 
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
 
 
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

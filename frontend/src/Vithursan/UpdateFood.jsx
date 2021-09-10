@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { Col } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from "react-router-dom";
-export default class AddFoodItem extends Component {
+
+export default class UpdateFood extends Component {
+
     constructor(props) {
         super(props);
     
@@ -18,15 +19,32 @@ export default class AddFoodItem extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
-           // id:this.props.match.params.id,
+            id:this.props.match.params.id,
             foodItemName:"",
             price:"",
             description:"",
             category:"",
-            path:""
+            path:"",
+            altimg: "",
         };
       }
-    
+      componentDidMount() {
+        axios
+          .get("http://localhost:8090/api/FoodItem/get/" + this.props.match.params.id)
+          .then((res) => {
+            this.setState({
+                foodItemName: res.data.foodItemName,
+                price: res.data.price,
+                description: res.data.description,
+                category: res.data.category,
+                path: res.data.path,
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
       onChangeFoodItemName(e) {
         this.setState({
             foodItemName: e.target.value,
@@ -53,7 +71,8 @@ export default class AddFoodItem extends Component {
 
       onChangePath(e) {
         this.setState({
-          path: e.target.files[0],
+          path: URL.createObjectURL(e.target.files[0]),
+          altimg: e.target.files[0],
         });
       }
 
@@ -74,45 +93,45 @@ export default class AddFoodItem extends Component {
         formdata.append("price", this.state.price);
         formdata.append("description", this.state.description);
         formdata.append("category", this.state.category);
-        formdata.append("File", this.state.path);
+        formdata.append("File", this.state.altimg);
 
         for (var value of formdata.values()) {
           console.log(value);
         }
         
         axios
-          .post("http://localhost:8090/api/FoodItem/add", formdata)
+          .put("http://localhost:8090/api/FoodItem/update/"+this.props.match.params.id, formdata)
           .then((res) => {
             console.log(res.data);
            
           });
     
-        this.setState({
-            foodItemName:"",
-            price:"",
-            description:"",
-            category:"",
-            //path:""
-        });
+        // this.setState({
+        //     foodItemName:"",
+        //     price:"",
+        //     description:"",
+        //     category:"",
+        //     //path:""
+        // });
     
-        alert("Food added successfully");
+        alert("Food Updated successfully");
        
       }
 
     render() {
         return (
             <div>
+
             <br></br>
-            <br></br>
-            <h3 className="text-center" style={{color:"#0e7794"}}>Add Food Item Details</h3>
+            <h3 className="text-center" style={{color:"#0e7794"}}>Update Food Item Details</h3>
 
 
 <div className = "card col-md-6 offset-md-3 offset-md-3">
 <div className="container">
-            <Form onSubmit={this.onSubmit} >
+            <Form onSubmit={this.onSubmit} class="form">
 
-            <Form.Group  controlId="formGroupEmail">
-            <Form.Label >Food Item Name</Form.Label>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label>Food Item Name</Form.Label>
               <Form.Control 
                   type="text" 
                   required={true} 
@@ -123,36 +142,35 @@ export default class AddFoodItem extends Component {
                   value={this.state.foodItemName} 
               />
             </Form.Group>
-
+         
             <Form.Group className="mb-3" controlId="formGroupPassword">
               <Form.Label>Price</Form.Label>
               <Form.Control 
-                  type="number" 
+                  type="currency" 
                   required={true} 
-                  min="1"
                   placeholder="Price" 
                   onChange={this.onChangePrice}  
                   value={this.state.price}/>
             </Form.Group>   
-
+       
             <Form.Label>Description</Form.Label>
             <FloatingLabel controlId="floatingTextarea2" label="Description" >
                 <Form.Control
                      as="textarea"
                      required={true} 
                      pattern="\w+.{10,}.[/\D/g]" 
-                     title="Food description should not contain numbers or symbols and must be largerthan 10 characters." 
+                     title="Food description should not contain numbers or symbols and must be larger than 10 characters." 
                      style={{ height: '100px' }}
                      onChange={this.onChangeDescription}  
                      value={this.state.description}
                  />
             </FloatingLabel>
-
+         
             <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Category</Form.Label>
-            <Form.Select     required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
-            <option >Choose ..</option>
-              <option>Kottu</option>
+            <Form.Select    required={true}   onChange={this.onChangeCategory}  value={this.state.category}>
+            <option>Choose ..</option>
+            <option>Kottu</option>
               <option>Rice & Curry</option>
               <option>Briyanies</option>
               <option>Naans & Chappathis</option>
@@ -171,7 +189,7 @@ export default class AddFoodItem extends Component {
             </Form.Select>
           </Form.Group>
 
-          
+       
 
           <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Food Image</Form.Label>
@@ -180,20 +198,28 @@ export default class AddFoodItem extends Component {
               onChange={this.onChangePath} 
               //value={this.state.path}
           />
+          <img
+          alt="Image Not Found"
+          height="150"
+          width="150"
+          src={"http://localhost:8090/Images/" + this.state.path}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = this.state.path;
+          }}
+        ></img>
         </Form.Group>
         <br></br>
-
-        <Button variant="#053b4b" type="submit" style={{marginLeft:"160px" , width:"200px", height:"40px",backgroundColor:"#053b4b", color:"white"}}> 
+      
+        <Button className="btn" varient="black" type="submit" style={{marginLeft:"160px" , width:"200px", height:"40px",backgroundColor:"#053b4b", color:"white"}}>
         Submit
-        </Button> 
-        <br></br>
+        </Button>
 
         </Form>
-        </div>
-       
-        </div>
-        <br></br>
+            </div>
+            </div>
             </div>
         )
     }
 }
+
