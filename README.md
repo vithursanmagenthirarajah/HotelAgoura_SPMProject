@@ -17,5 +17,5 @@ order management, reservation management, event management, employee management,
 which are server-side functions. 
 
 ## Technologies
-Backend - Spring Boot
-Frontend - React JS
+Backend - Spring Boot ,
+Frontend - React JS ,Database - Mysql
