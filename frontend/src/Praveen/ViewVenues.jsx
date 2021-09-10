@@ -18,7 +18,7 @@ export default class ViewVenues extends Component {
 
     componentDidMount(){
         axios
-            .get("http://localhost:8080/api/venue/venues")
+            .get("http://localhost:8090/api/venue/venues")
             .then((res) => {
                 this.setState({Venues:res.data});
             })
@@ -39,7 +39,7 @@ export default class ViewVenues extends Component {
     deleteVenue(id){
         console.log("Deleting Id: ", id)
         axios
-            .delete("http://localhost:8080/api/venue/deleteVenue/" + id)
+            .delete("http://localhost:8090/api/venue/deleteVenue/" + id)
             .then((res) =>{
                 console.log(res)
             })

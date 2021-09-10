@@ -32,7 +32,7 @@ class UpdateRoom extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/api/Rooms/" + this.props.match.params.id)
+      .get("http://localhost:8090/api/Rooms/" + this.props.match.params.id)
       .then((res) => {
         this.setState({
           type: res.data.type,
@@ -101,7 +101,7 @@ class UpdateRoom extends Component {
     }
     axios
       .put(
-        "http://localhost:8080/api/Rooms/update/" + this.props.match.params.id,
+        "http://localhost:8090/api/Rooms/update/" + this.props.match.params.id,
         formdata
       )
       .then((res) => {
@@ -215,16 +215,16 @@ class UpdateRoom extends Component {
                   </Form.Group>
                   <br></br>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <img
+                    <image
                       alt="Image Not Found"
                       height="200"
                       width="250"
-                      src={"http://localhost:8080/Images/" + this.state.image}
+                      src={"http://localhost:8090/Images/" + this.state.image}
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = this.state.image;
                       }}
-                    ></img>
+                    ></image>
                   </Form.Group>
                   <br></br>
                   <Button
@@ -253,6 +253,7 @@ class UpdateRoom extends Component {
             height: "570px",
             marginLeft: "60%",
             marginTop: "-69%",
+            alt:"image",
           }}
           src={uroom2}
         />

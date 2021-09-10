@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { Col, Row } from "react-bootstrap";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
+import { Row } from "react-bootstrap";
 import image from "./images/Room.jpg";
 import simage from "./images/vr.jpg";
 import icon from "./images/icon (2).png";
@@ -89,7 +86,7 @@ export default class AddFoodItem extends Component {
     for (var value of formdata.values()) {
       console.log(value);
     }
-    axios.post("http://localhost:8080/api/Rooms/add", formdata).then((res) => {
+    axios.post("http://localhost:8090/api/Rooms/add", formdata).then((res) => {
       console.log(res.data);
       alert("Room Added Successfully");
     });
@@ -115,13 +112,14 @@ export default class AddFoodItem extends Component {
             display: "flex",
             width: "100%",
             height: "auto",
+            alt:"image",
           }}
           src={image}
         />
         <br></br>
         <br></br>
         <h3 style={{ fontFamily: "Hina Mincho" }}>
-          <img src={icon} />
+          <img src={icon}  alt="image"/>
           Add Room Details
         </h3>
         <hr
@@ -243,6 +241,7 @@ export default class AddFoodItem extends Component {
               height: "570px",
               marginLeft: "60%",
               marginTop: "-52%",
+              alt:"image",
             }}
             src={simage}
           />
@@ -252,71 +251,3 @@ export default class AddFoodItem extends Component {
   }
 }
 
-{
-  /*        
-          <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>Room Type</Form.Label>
-            <Form.Select
-              defaultValue="Select One ..."
-              onChange={this.onChangeType}
-              value={this.state.type}
-            >
-              <option>Suite</option>
-              <option>Standard</option>
-              <option>Deluxe</option>
-            </Form.Select>
-          </Form.Group> */
-}
-
-{
-  /* <Form.Label>Room Description</Form.Label>
-          <FloatingLabel controlId="floatingTextarea2" label="Description">
-            <Form.Control
-              as="textarea"
-              style={{ height: "100px" }}
-              onChange={this.onChangeDesc}
-              value={this.state.room_desc}
-            />
-          </FloatingLabel> */
-}
-
-// <Form.Group as={Col} controlId="formGridState">
-//   <Form.Label>Beds</Form.Label>
-//   <Form.Select
-//     defaultValue="Choose..."
-//     onChange={this.onChangeBeds}
-//     value={this.state.beds}
-//   >
-//     <option>1</option>
-//     <option>2</option>
-//     <option>3</option>
-//   </Form.Select>
-// </Form.Group>
-
-// <Form.Group as={Col} controlId="formGridState">
-//   <Form.Label>Bathrooms</Form.Label>
-//   <Form.Select
-//     defaultValue="Choose..."
-//     onChange={this.onChangeBathRoom}
-//     value={this.state.bathrooms}
-//   >
-//     <option>1</option>
-//     <option>2</option>
-//     <option>3</option>
-//   </Form.Select>
-// </Form.Group>
-
-// <Form.Group controlId="formFile" className="mb-3">
-//   <Form.Label>Room Image</Form.Label>
-//   <Form.Control type="file" onChange={this.onChangeImage} />
-// </Form.Group>
-
-//     <Button variant="primary" type="submit">
-//       Submit
-//     </Button>
-//   </Form>
-// </div>
-//     );
-
-// }
-// }

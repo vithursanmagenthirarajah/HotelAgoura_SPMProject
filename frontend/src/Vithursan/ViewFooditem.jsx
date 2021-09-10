@@ -81,7 +81,7 @@ export default class ViewFooditem extends Component {
                                         <td> {Food.category}</td>
                                         <td>
                                         <button style={{marginLeft: "10px"}} onClick={ () => this.deleteFoodItemDetails(Food.id)} className="btn btn-danger">Delete</button>
-                                        <Link to={"/update/" +Food.id}><button style={{marginLeft: "10px"}}  className="btn btn-info">Update</button></Link>
+                                        <Link to={"/fupdate/" +Food.id}><button style={{marginLeft: "10px"}}  className="btn btn-info">Update</button></Link>
                                         </td>
                                    </tr>
                                )

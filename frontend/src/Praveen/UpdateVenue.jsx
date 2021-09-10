@@ -30,7 +30,7 @@ export default class UpdateVenue extends Component {
 
     componentDidMount(){
         axios
-            .get("http://localhost:8080/api/venue/venues/"+ this.props.match.params.id)
+            .get("http://localhost:8090/api/venue/venues/"+ this.props.match.params.id)
             .then((res)=>{
                 this.setState({
                     name:res.data.name,
@@ -95,7 +95,7 @@ export default class UpdateVenue extends Component {
         for (var value of formdata.values()) {
             console.log(value);
         }
-        axios.put("http://localhost:8080/api/venue/updateVenue/" + this.props.match.params.id, formdata).then((res) => {
+        axios.put("http://localhost:8090/api/venue/updateVenue/" + this.props.match.params.id, formdata).then((res) => {
           console.log(res.data);
           alert("Venue updated Successfully");
           window.location.href = '/venues';

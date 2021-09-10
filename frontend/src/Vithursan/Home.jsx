@@ -26,12 +26,12 @@ const Home = (props) => {
             <div style={{marginLeft:"60px"}}>
             <Row xs={1} md={3} className="g-4">
             <Col>
-            <Link to="/getemployees">
+            <Link to="/visual">
             <Card style={{ width: '20rem' }}>
             <Card.Img variant="top" src={hotel} />
             </Card>
            
-              <Card.Title link to="/add"><Link to="/getemployees"><Button variant="secondary" style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Rooom Details</Button> </Link></Card.Title>
+              <Card.Title ><Link to="/visual"><Button variant="secondary" style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Rooom Details</Button> </Link></Card.Title>
               {/* <Card.Text>
                
               </Card.Text>
@@ -57,12 +57,12 @@ const Home = (props) => {
 
 
           <Col>
-          <Link to="/getemployees">
+          <Link to="/venues">
             <Card style={{ width: '20rem'}}>
             <Card.Img variant="top" src={event}  height="180px"/>
             </Card>
            
-              <Card.Title ><Link to="/getemployees"> <Button variant="secondary"  style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Event Details</Button> </Link></Card.Title>
+              <Card.Title ><Link to="/venues"> <Button variant="secondary"  style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Event Details</Button> </Link></Card.Title>
               {/* <Card.Text>
                
               </Card.Text>

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Row";
+
 import {
   CCard,
   CRow,
@@ -14,7 +13,7 @@ import {
   CButton,
 } from "@coreui/react";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+
 
 export default class ViewFooditem extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ export default class ViewFooditem extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/api/Rooms/get")
+      .get("http://localhost:8090/api/Rooms/get")
       .then((response) => {
         this.setState({ Rooms: response.data });
         console.log(this.state.Rooms);
@@ -43,7 +42,7 @@ export default class ViewFooditem extends Component {
   }
   deleteRoomDetails(id) {
     axios
-      .delete("http://localhost:8080/api/Rooms/delete/" + id)
+      .delete("http://localhost:8090/api/Rooms/delete/" + id)
       .then((response) => {
         console.log(response.data);
       });
@@ -54,7 +53,7 @@ export default class ViewFooditem extends Component {
   }
 
   passData(SingleRoom) {
-    axios.get("http:localhost:8080/api/Rooms");
+    axios.get("http:localhost:8090/api/Rooms");
   }
 
   render() {
@@ -117,13 +116,13 @@ export default class ViewFooditem extends Component {
                 <CRow className="g-0">
                   <CCol md={4}>
                     <CCardImage
-                      src={`http://localhost:8080/Images/${SingleRoom.image}`}
+                      src={`http://localhost:8090/Images/${SingleRoom.image}`}
                       height="400"
                       width="150"
                       borderRadius="15"
                     />
                     {console.log(
-                      `http://localhost:8080/Images/${SingleRoom.image}`
+                      `http://localhost:8090/Images/${SingleRoom.image}`
                     )}
                   </CCol>
 

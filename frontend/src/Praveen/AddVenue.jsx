@@ -92,7 +92,7 @@ export default class AddVenue extends Component {
         for (var value of formdata.values()) {
             console.log(value);
         }
-        axios.post("http://localhost:8080/api/venue/addVenue", formdata).then((res) => {
+        axios.post("http://localhost:8090/api/venue/addVenue", formdata).then((res) => {
           console.log(res.data);
           alert("Venue Added Successfully");
           window.location.href ='/venues';

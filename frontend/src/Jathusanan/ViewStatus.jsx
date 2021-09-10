@@ -15,7 +15,7 @@ export default class ViewFooditem extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/api/status/get")
+      .get("http://localhost:8090/api/status/get")
       .then((response) => {
         this.setState({ RoomStatus: response.data });
       })

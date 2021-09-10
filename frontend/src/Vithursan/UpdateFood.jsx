@@ -199,11 +199,13 @@ export default class UpdateFood extends Component {
               //value={this.state.path}
           />
           <img
-          alt="Image Not Found"
+        
           height="150"
           width="150"
           src={"http://localhost:8090/Images/" + this.state.path}
+          alt="Image Not Found"
           onError={(e) => {
+            
             e.target.onerror = null;
             e.target.src = this.state.path;
           }}
