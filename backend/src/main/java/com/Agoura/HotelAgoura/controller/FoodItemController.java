@@ -124,15 +124,6 @@ public class FoodItemController {
 			
 			return FoodItemRepository.save(FoodItem1);
 			
-			FItem.setFoodItemName(FoodItemDetails.getFoodItemName()); 
-			FItem.setPrice(FoodItemDetails.getPrice());
-			FItem.setDescription(FoodItemDetails.getDescription());
-			FItem.setCategory(FoodItemDetails.getCategory());
-			FItem.setPath(FoodItemDetails.getPath());
-			
-			FoodItem updatedFoodItem = FoodItemRepository.save(FItem);
-			return ResponseEntity.ok(updatedFoodItem);
-			
 		}
 		
 		// delete food item
