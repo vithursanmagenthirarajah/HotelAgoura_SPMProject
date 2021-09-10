@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
 export default class FoodCard extends Component {
 
     constructor(props) {
@@ -11,8 +12,24 @@ export default class FoodCard extends Component {
 
         this.state = {
             // id: this.props.match.params.id,
-            FoodItem: []
+            FoodItem: [],
+            searchKey:"",
+            sortByNameParts: [],
+            isSorted: false
         }
+    }
+
+    sortByName() {
+
+        var sortedParts = this.state.Parts.sort(function(a,b) {
+            return a.name.localeCompare(b.name)
+        });
+
+        this.setState({
+            sortByNameParts: sortedParts,
+            isSorted: true
+        })
+        console.log(sortedParts);
     }
 
     componentDidMount(){
@@ -27,7 +44,26 @@ export default class FoodCard extends Component {
         // ItemService.getItemsById(this.state.id).then( res => {
         //     this.setState({item: res.data});
         // })
+
+        
     }
+
+    onChangeSearchKey = (e) => {
+        this.setState({
+            searchKey : e.target.value
+        })
+    }
+
+    handleSearch(){
+        axios
+            .get("http://localhost:8090/api/FoodItem/search")
+            .then(res => {
+                this.setState({Parts:res.data})
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    
     render() {
         return (
 
@@ -35,6 +71,13 @@ export default class FoodCard extends Component {
             <br/> <br/>
             <h1 className="text-center" style={{color:"#0e7794"}}>Food Items</h1>
             <br/><br/>
+            <div>
+            <Form>
+            Search : <Form.Control type = "text" value = {this.state.searchKey} onChange = {this.onChangeSearchKey}></Form.Control>
+            <Button type = "submit"><a href={`/search/${this.state.searchKey}`} replace = "true">Search</a></Button>
+            </Form>
+            <Button onClick={() => this.sortByName()}>Sort By Name</Button>
+            </div>
             <Row xs={20} md={3} className="g-4">
             {
                 this.state.FoodItem.map( Food => 
