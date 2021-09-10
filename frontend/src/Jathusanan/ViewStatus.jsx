@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import image from "./images/table.jpg";
+// import { Link } from "react-router-dom";
+// import image from "./images/table.jpg";
 
 export default class ViewFooditem extends Component {
   constructor(props) {

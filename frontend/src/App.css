@@ -5,7 +5,7 @@
   font-family: "PT Sans", sans-serif;
 } */
 .App {
-  text-align: Left;
+  text-align: left;
 }
 
 .App-logo {
@@ -81,6 +81,20 @@
  
 }
 
+
+.footer {
+  position: absolute;
+  bottom: -280px;
+  width:100%;
+  height: 50px;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+.navbar-nav > li{
+  margin-left:10px;
+  margin-right:10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
