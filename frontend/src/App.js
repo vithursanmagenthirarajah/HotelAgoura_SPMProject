@@ -5,7 +5,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //import
 //import Sample from "./Vithursan/sample.jsx"
- import AddFoodItem from "./Vithursan/AddFoodItem";
+import AddFoodItem from './Vithursan/AddFoodItem';
+import AddVenue from './Praveen/AddVenue';
+import ViewVenues from './Praveen/ViewVenues';
+import UpdateVenue from './Praveen/UpdateVenue';
+//import Navbar from './Praveen/Navbar';
+
+ //import AddFoodItem from "./Vithursan/AddFoodItem";
 // import ViewFooditem from "./Vithursan/ViewFooditem";
 import AddRoom from "./Jathusanan/AddRoom";
 import ViewRoom from "./Jathusanan/ViewRoom";
@@ -39,6 +45,7 @@ import Home from './Vithursan/Home';
 
 function App() {
   return (
+ 
     <div className="App">
       <Router>
         <AdminHeader />
@@ -66,6 +73,10 @@ function App() {
             <Route path = "/viewemployee/:id" component = {ViewEmployee}></Route>
             
             
+            <Route path='/' exact={true} component={AddFoodItem}/>
+            <Route path='/addVenue' component={AddVenue}/>
+            <Route path='/venues' component={ViewVenues}/>
+            <Route path='/updateVenue/:id' component={UpdateVenue}/>
 
           </Switch>
         </div>
