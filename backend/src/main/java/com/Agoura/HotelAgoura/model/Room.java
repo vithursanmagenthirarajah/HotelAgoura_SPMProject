@@ -17,39 +17,36 @@ public class Room {
 	private String type;
 	@Column(name = "room_desc", nullable = true)
 	private String room_desc;
-	@Column(name = "beds", nullable = true)
-	private String beds;
+	@Column(name = "capacity", nullable = true)
+	private String capacity;
 	@Column(name = "imagePath", nullable = true)
 	private String image;
-	@Column(name = "bathrooms", nullable = true)
-	private String bathrooms;
+	@Column(name = "size", nullable = true)
+	private String size;
 	@Column(name = "price", nullable = true)
 	private String price;
+	@Column(name = "breakfast", nullable = true)
+	private String breakfast;
+	@Column(name = "pets", nullable = true)
+	private String pets;
+	
+	public String getPets() {
+		return pets;
+	}
+
+	public void setPets(String pets) {
+		this.pets = pets;
+	}
+
+	
 	
 	//Getters and Setters
 	
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-	public String getBathrooms() {
-		return bathrooms;
-	}
-
-	public void setBathrooms(String bathrooms) {
-		this.bathrooms = bathrooms;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
+	
+	
+	//Constructors
+	public Room() {
+		
 	}
 
 	public Long getRid() {
@@ -76,33 +73,63 @@ public class Room {
 		this.room_desc = room_desc;
 	}
 
-	
-
-	public String getBeds() {
-		return beds;
+	public String getCapacity() {
+		return capacity;
 	}
 
-	public void setBeds(String beds) {
-		this.beds = beds;
+	public void setCapacity(String capacity) {
+		this.capacity = capacity;
 	}
 
-	
-	
-	//Constructors
-	public Room() {
-		
+	public String getImage() {
+		return image;
 	}
 
-	public Room(Long rid, String type, String room_desc, String beds, String image, String bathrooms, String price) {
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getBreakfast() {
+		return breakfast;
+	}
+
+	public void setBreakfast(String breakfast) {
+		this.breakfast = breakfast;
+	}
+
+	public Room(Long rid, String type, String room_desc, String capacity, String image, String size, String price,
+			String breakfast, String pets) {
 		super();
 		this.rid = rid;
 		this.type = type;
 		this.room_desc = room_desc;
-		this.beds = beds;
+		this.capacity = capacity;
 		this.image = image;
-		this.bathrooms = bathrooms;
+		this.size = size;
 		this.price = price;
+		this.breakfast = breakfast;
+		this.pets = pets;
 	}
+
+	
+
+	
 
 	
 
