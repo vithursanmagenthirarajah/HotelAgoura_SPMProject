@@ -59,7 +59,7 @@ export default class ViewVenues extends Component {
                         Venue => 
                             <Col key={Venue.id}>
                                 <Card style = {{ width: '18rem', height:'35rem',padding : "1rem", borderRadius: 15}}>
-                                    <Card.Img style = {{width : '16rem', height : '16rem'}} variant = "top" src ={`http://localhost:8080/${Venue.img}`} alt="venueimg"/>
+                                    <Card.Img style = {{width : '16rem', height : '16rem'}} variant = "top" src ={`http://localhost:8090/images/${Venue.img}`} alt="venueimg"/>
                                     <Card.Body>
                                         <Card.Title style={{fontWeight:'bold', fontSize:'30px'}}>{Venue.name}</Card.Title>
                                         <Card.Text>{Venue.type}</Card.Text>
@@ -80,7 +80,7 @@ export default class ViewVenues extends Component {
                 <Link to = "/addVenue" style={{textDecoration :'none', color:'black'}}>
                 <Card style = {{ width: '18rem', height:'35rem', padding:"1rem", borderRadius: 15}}>
                                     <Card.Img src = "https://icon-library.com/images/plus-symbol-icon/plus-symbol-icon-28.jpg" style = {{width : '16rem', height : '16rem'}} alt = "addIcon"/>
-                                    <Card.Title style={{fontWeight:'bold', fontSize:'30px'}}>Add Venue</Card.Title>
+                                    <Card.Title style={{fontWeight:'bold', fontSize:'30px', alignSelf:'center'}}>Add Venue</Card.Title>
                 </Card>
                 </Link>
                 </Row>

@@ -1,5 +1,7 @@
 package com.Agoura.HotelAgoura.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +34,7 @@ public class Venue {
 	
 	@Column(name = "availability")
 	private Boolean availability;
-	
+ 	
 
 	public Venue() {
 		super();

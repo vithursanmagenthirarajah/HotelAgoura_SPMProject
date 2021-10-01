@@ -28,6 +28,9 @@ import AdminDash from './Vithursan/AdminDash';
 import UpdateFood from './Vithursan/UpdateFood';
 import Home from './Vithursan/Home';
 import AddFoodItem from './Vithursan/AddFoodItem';
+import VenueDisplay from "./Praveen/VenueDisplay";
+import VenueBooking from "./Praveen/VenueBooking";
+import FinalizeReservation from "./Praveen/FinalizeReservation";
 
 function App() {
   return (
@@ -62,6 +65,9 @@ function App() {
             <Route path='/addVenue' component={AddVenue}/>
             <Route path='/venues' component={ViewVenues}/>
             <Route path='/updateVenue/:id' component={UpdateVenue}/>
+            <Route path='/viewVenues' component={VenueDisplay}/>
+            <Route path='/viewVenue/:id' component={VenueBooking}/>
+            <Route path='/finalizeHall/:id' component={FinalizeReservation}/>
 
           </Switch>
         </div>
