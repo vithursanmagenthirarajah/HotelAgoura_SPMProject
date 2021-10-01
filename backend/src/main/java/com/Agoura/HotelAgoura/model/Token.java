@@ -1,6 +1,5 @@
 package com.Agoura.HotelAgoura.model;
 
-
 public class Token {
 
 	private String id;

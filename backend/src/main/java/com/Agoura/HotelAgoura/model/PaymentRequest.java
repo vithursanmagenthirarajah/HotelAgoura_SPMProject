@@ -1,4 +1,5 @@
 package com.Agoura.HotelAgoura.model;
+
 public class PaymentRequest {
 
 	public enum Currency{
