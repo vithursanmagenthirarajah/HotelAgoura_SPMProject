@@ -149,6 +149,19 @@ public class VenueController {
 		
 	}
 	
+	@PutMapping("/setAvailability/{id}")
+	public ResponseEntity<Venue> setAvailabilityStatus(@PathVariable int id, @ModelAttribute Venue venue){
+		Venue vnue = repo.findById(id)
+						 .orElseThrow(()-> new ResourceNotFoundException("Venue not found"));
+		
+		vnue.setAvailability(venue.getAvailability());
+		
+		Venue updatedVenue = repo.save(vnue);
+		
+		return ResponseEntity.ok(updatedVenue);
+		
+	}
+	
 //	@GetMapping("/Images/{id}")
 //	public String getImages(@PathVariable int id) {
 //		Venue venue = repo.findById(id)

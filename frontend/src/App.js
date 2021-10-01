@@ -37,6 +37,9 @@ import AdminDash from './Vithursan/AdminDash';
 import UpdateFood from './Vithursan/UpdateFood';
 import Home from './Vithursan/Home';
 import AddFoodItem from './Vithursan/AddFoodItem';
+import VenueDisplay from "./Praveen/VenueDisplay";
+import VenueBooking from "./Praveen/VenueBooking";
+import FinalizeReservation from "./Praveen/FinalizeReservation";
 import OrderForm from "./Vithursan/OrderForm";
 import ViewOrder from "./Vithursan/ViewOrder";
 import StripeButton from "./Vithursan/stripebutton.component";
@@ -48,7 +51,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <AdminHeader /> */}
+        <AdminHeader />
         
         
         <div className="container">
@@ -65,7 +68,10 @@ function App() {
             <Route path='/view' exact={true} component={ViewFooditem}/>
             <Route path='/card' exact={true} component={FoodCard}/>
             <Route path='/fupdate/:id' exact={true} component={UpdateFood}/>
-
+            <Route path='/order/:id' exact={true} component={OrderForm}/>
+            <Route path='/vieworder' exact={true} component={ViewOrder}/>
+            <Route path = "/Stripebutton" exact component = {StripeButton}/>
+            
 
     
   
@@ -89,10 +95,10 @@ function App() {
             <Route path='/addVenue' component={AddVenue}/>
             <Route path='/venues' component={ViewVenues}/>
             <Route path='/updateVenue/:id' component={UpdateVenue}/>
-            <Route path='/order/:id' exact={true} component={OrderForm}/>
-            <Route path='/vieworder' exact={true} component={ViewOrder}/>
-            <Route path = "/Stripebutton" exact component = {StripeButton}/>
-            
+            <Route path='/viewVenues' component={VenueDisplay}/>
+            <Route path='/viewVenue/:id' component={VenueBooking}/>
+            <Route path='/finalizeHall/:id' component={FinalizeReservation}/>
+           
 
             <Route path="/addVenue" component={AddVenue} />
             <Route path="/venues" component={ViewVenues} />
