@@ -20,7 +20,7 @@ import com.Agoura.HotelAgoura.model.Booking;
 
 import com.Agoura.HotelAgoura.repository.BookingRepo;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://someserver:3001"})
 
 @RestController
 @RequestMapping("/api/Booking")

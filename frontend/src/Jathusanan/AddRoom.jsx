@@ -148,9 +148,18 @@ export default class AddFoodItem extends Component {
                   >
                     <input className="form-control" />
                     <option>Select One ...</option>
-                    <option>Suite</option>
-                    <option>Standard</option>
-                    <option>Deluxe</option>
+                    <option>Single Economy</option>
+                    <option>Single Basic</option>
+                    <option>Single Standard</option>
+                    <option>Single Deluxe</option>
+                    <option>Double Economy</option>
+                    <option>Double Basic</option>
+                    <option>Double Standard</option>
+                    <option>Double Deluxe</option>
+                    <option>Family Basic</option>
+                    <option>Family Standard</option>
+                    <option>Family Deluxe</option>
+                    <option>Presidential</option>
                   </select>
                 </div>
                 <br></br>

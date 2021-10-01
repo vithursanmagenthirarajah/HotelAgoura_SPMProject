@@ -15,7 +15,6 @@ import UpdateRoom from "./Jathusanan/UpdateRoom";
 import AdminHeader from "./Jathusanan/AdminHeader";
 import ViewStatus from "./Jathusanan/ViewStatus";
 import firebase_image from "./Jathusanan/fileUpload";
-import roombook from "./Jathusanan/Sprint2/RoomBooking";
 
 //Shanghavi
 import EmployeeList from "./Shanghavi/EmployeeList";

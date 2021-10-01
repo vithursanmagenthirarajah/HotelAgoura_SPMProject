@@ -34,7 +34,7 @@ import com.Agoura.HotelAgoura.service.RoomService;
 
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 
 @RestController
 @RequestMapping("/api/Rooms")
