@@ -10,7 +10,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,7 +33,8 @@ import com.Agoura.HotelAgoura.repository.RoomRepo;
 import com.Agoura.HotelAgoura.service.RoomService;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 
 @RestController
 @RequestMapping("/api/Rooms")
@@ -64,6 +65,7 @@ public class RoomController {
 		
 	}
 	
+	
 	// get all food Items
 			@GetMapping("/get")
 			public List<Room> getAllRooms(){
@@ -80,17 +82,23 @@ public class RoomController {
 			if(Objects.nonNull(room.getType()) && !"".equalsIgnoreCase(room.getType())) {
 				room1.setType(room.getType());
 			}
-			if(Objects.nonNull(room.getBathrooms()) && !"".equalsIgnoreCase(room.getBathrooms())) {
-				room1.setBathrooms(room.getBathrooms());
+			if(Objects.nonNull(room.getBreakfast()) && !"".equalsIgnoreCase(room.getBreakfast())) {
+				room1.setBreakfast(room.getBreakfast());
 			}
-			if(Objects.nonNull(room.getBeds()) && !"".equalsIgnoreCase(room.getBeds())) {
-				room1.setBeds(room.getBeds());
+			if(Objects.nonNull(room.getPets()) && !"".equalsIgnoreCase(room.getPets())) {
+				room1.setPets(room.getPets());
 			}
 			if(Objects.nonNull(room.getRoom_desc()) && !"".equalsIgnoreCase(room.getRoom_desc())) {
 				room1.setRoom_desc(room.getRoom_desc());
 			}
 			if(Objects.nonNull(room.getPrice()) && !"".equalsIgnoreCase(room.getPrice())) {
 				room1.setPrice(room.getPrice());
+			}
+			if(Objects.nonNull(room.getCapacity()) && !"".equalsIgnoreCase(room.getCapacity())) {
+				room1.setCapacity(room.getCapacity());
+			}
+			if(Objects.nonNull(room.getSize()) && !"".equalsIgnoreCase(room.getSize())) {
+				room1.setSize(room.getSize());
 			}
 			File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -118,6 +126,19 @@ public class RoomController {
 			response.put("deleted", Boolean.TRUE);
 			return ResponseEntity.ok(response);
 		}
+		
+		@GetMapping("/search")
+	    public List<Room> getType(@Param("searchKey") String searchKey){
+
+	        if(searchKey!=null){
+
+//	            List<Room> result = rp.findAll((searchKey));
+//	            System.out.println(result);
+	            return rp.findAll(searchKey);
+
+	        }
+	        return rp.findAll();
+	    }
 		
 			
 	

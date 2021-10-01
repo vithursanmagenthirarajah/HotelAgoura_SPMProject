@@ -3,7 +3,7 @@ package com.Agoura.HotelAgoura.model;
 public class PaymentRequest {
 
 	public enum Currency{
-		INR,USD;
+		LKR
 	}
 	   private String description;
 	    private int amount;
