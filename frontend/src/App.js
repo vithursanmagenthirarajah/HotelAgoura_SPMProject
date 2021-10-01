@@ -4,9 +4,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //praveen
-import AddVenue from './Praveen/AddVenue';
-import ViewVenues from './Praveen/ViewVenues';
-import UpdateVenue from './Praveen/UpdateVenue';
+import AddVenue from "./Praveen/AddVenue";
+import ViewVenues from "./Praveen/ViewVenues";
+import UpdateVenue from "./Praveen/UpdateVenue";
 
 //Jathusanan
 import AddRoom from "./Jathusanan/AddRoom";
@@ -14,6 +14,7 @@ import ViewRoom from "./Jathusanan/ViewRoom";
 import UpdateRoom from "./Jathusanan/UpdateRoom";
 import AdminHeader from "./Jathusanan/AdminHeader";
 import ViewStatus from "./Jathusanan/ViewStatus";
+
 
 //Shanghavi
 import EmployeeList from './Shanghavi/EmployeeList';
@@ -29,21 +30,22 @@ import Reviewexpense from "./Shanghavi/Expensereport";
 // import Register from "./Shanghavi/Login/register.component";
 // import Profile from "./Shanghavi/Login/profile.component";
 
-
-
 //Vithursan
-import ViewFooditem from './Vithursan/ViewFooditem';
+import ViewFooditem from "./Vithursan/ViewFooditem";
 import FoodCard from './Vithursan/FoodCard';
 import AdminDash from './Vithursan/AdminDash';
 import UpdateFood from './Vithursan/UpdateFood';
 import Home from './Vithursan/Home';
 import AddFoodItem from './Vithursan/AddFoodItem';
+import OrderForm from "./Vithursan/OrderForm";
+import ViewOrder from "./Vithursan/ViewOrder";
+import StripeButton from "./Vithursan/stripebutton.component";
+import PrintThisComponent from "./Vithursan/Print";
 
 import SearchResult from "./Shanghavi/Search";
 
 function App() {
   return (
- 
     <div className="App">
       <Router>
         {/* <AdminHeader /> */}
@@ -56,8 +58,8 @@ function App() {
             <Route path="/update/:id" exact={true} component={UpdateRoom} />
             <Route path="/AddRoom" exact={true} component={AddRoom} />
 
-            <Route path='/' exact={true} component={Home}/>
-            <Route path='/home' exact={true} component={Home}/>
+         
+            <Route path="/" exact={true} component={Home} />
             <Route path='/Fdash' exact={true} component={AdminDash}/>
             <Route path='/add' exact={true} component={AddFoodItem}/>
             <Route path='/view' exact={true} component={ViewFooditem}/>
@@ -87,7 +89,14 @@ function App() {
             <Route path='/addVenue' component={AddVenue}/>
             <Route path='/venues' component={ViewVenues}/>
             <Route path='/updateVenue/:id' component={UpdateVenue}/>
+            <Route path='/order/:id' exact={true} component={OrderForm}/>
+            <Route path='/vieworder' exact={true} component={ViewOrder}/>
+            <Route path = "/Stripebutton" exact component = {StripeButton}/>
+            
 
+            <Route path="/addVenue" component={AddVenue} />
+            <Route path="/venues" component={ViewVenues} />
+            <Route path="/updateVenue/:id" component={UpdateVenue} />
           </Switch>
         </div>
       </Router>

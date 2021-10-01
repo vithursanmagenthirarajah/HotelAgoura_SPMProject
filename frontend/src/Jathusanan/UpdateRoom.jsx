@@ -12,20 +12,23 @@ class UpdateRoom extends Component {
     super(props);
     this.onChangeType = this.onChangeType.bind(this);
     this.onChangeDesc = this.onChangeDesc.bind(this);
-    this.onChangeBeds = this.onChangeBeds.bind(this);
-    this.onChangeBathRoom = this.onChangeBathRoom.bind(this);
     this.onChangeImage = this.onChangeImage.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
-    // this.onChangeAltImage = this.onChangeAltImage.bind(this);
+    this.onChangeBfast = this.onChangeBfast.bind(this);
+    this.onChangePets = this.onChangePets.bind(this);
+    this.onChangeSize = this.onChangeSize.bind(this);
+    this.onChangeCapacity = this.onChangeCapacity.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       type: "",
       room_desc: "",
-      beds: "",
-      bathrooms: "",
       image: "",
       altimg: "",
+      capacity: "",
+      size: "",
+      breakfast: "",
+      pets: "",
       price: "",
     };
   }
@@ -37,9 +40,11 @@ class UpdateRoom extends Component {
         this.setState({
           type: res.data.type,
           room_desc: res.data.room_desc,
-          beds: res.data.beds,
-          bathrooms: res.data.bathrooms,
+          pets: res.data.pets,
+          breakfast: res.data.breakfast,
           price: res.data.price,
+          size: res.data.size,
+          capacity: res.data.capacity,
           image: res.data.image,
         });
       })
@@ -56,18 +61,28 @@ class UpdateRoom extends Component {
       room_desc: e.target.value,
     });
   }
-
-  onChangeBeds(e) {
+  onChangeBfast(e) {
     this.setState({
-      beds: e.target.value,
+      breakfast: e.target.value,
+    });
+  }
+  onChangeCapacity(e) {
+    this.setState({
+      capacity: e.target.value,
+    });
+  }
+  onChangeSize(e) {
+    this.setState({
+      size: e.target.value,
     });
   }
 
-  onChangeBathRoom(e) {
+  onChangePets(e) {
     this.setState({
-      bathrooms: e.target.value,
+      pets: e.target.value,
     });
   }
+
   onChangePrice(e) {
     this.setState({
       price: e.target.value,
@@ -79,11 +94,6 @@ class UpdateRoom extends Component {
       altimg: e.target.files[0],
     });
   }
-  // onChangeAltImage() {
-  //   this.setState({
-  //     altimg: URL.createObjectURL(this.state.image),
-  //   });
-  // }
 
   onSubmit(e) {
     e.preventDefault();
@@ -91,10 +101,12 @@ class UpdateRoom extends Component {
 
     formdata.append("File", this.state.altimg);
     formdata.append("type", this.state.type);
-    formdata.append("price", this.state.price);
     formdata.append("room_desc", this.state.room_desc);
-    formdata.append("beds", this.state.beds);
-    formdata.append("bathrooms", this.state.bathrooms);
+    formdata.append("price", this.state.price);
+    formdata.append("size", this.state.size);
+    formdata.append("capacity", this.state.capacity);
+    formdata.append("breakfast", this.state.breakfast);
+    formdata.append("pets", this.state.pets);
 
     for (var value of formdata.values()) {
       console.log(value);
@@ -108,13 +120,6 @@ class UpdateRoom extends Component {
         console.log(res.data);
         alert("Room Updated Successfully");
       });
-
-    // this.setState({
-    //   type: "",
-    //   room_desc: "",
-    //   beds: "",
-    //   bathrooms: "",
-    // });
   }
 
   render() {
@@ -170,33 +175,53 @@ class UpdateRoom extends Component {
                     />
                   </FloatingLabel>
                   <br></br>
+                  <div className="form-group">
+                    <label> Breakfast</label>
+                    <select
+                      className="form-control"
+                      defaultValue="Choose..."
+                      onChange={this.onChangeBfast}
+                      value={this.state.breakfast}
+                    >
+                      <input className="form-control" />
+                      <option>Choose..</option>
+                      <option>Available</option>
+                      <option>Not Available</option>
+                    </select>
+                  </div>
+                  <br></br>
+                  <div className="form-group">
+                    <label> Pets</label>
+                    <select
+                      className="form-control"
+                      defaultValue="Choose..."
+                      onChange={this.onChangePets}
+                      value={this.state.pets}
+                    >
+                      <input className="form-control" />
+                      <option>Choose..</option>
+                      <option>Allowed</option>
+                      <option>Not Allowed</option>
+                    </select>
+                  </div>
+                  <br></br>
+                  <div className="form-group">
+                    <label> Capacity (people)</label>
+                    <select
+                      className="form-control"
+                      defaultValue="Choose..."
+                      onChange={this.onChangeCapacity}
+                      value={this.state.capacity}
+                    >
+                      <input className="form-control" />
+                      <option>Choose..</option>
+                      <option>2</option>
+                      <option>4</option>
+                      <option>6</option>
+                    </select>
+                  </div>
+                  <br></br>
 
-                  <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>Beds</Form.Label>
-                    <Form.Select
-                      defaultValue="Choose..."
-                      onChange={this.onChangeBeds}
-                      value={this.state.beds}
-                    >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </Form.Select>
-                  </Form.Group>
-                  <br></br>
-                  <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>Bathrooms</Form.Label>
-                    <Form.Select
-                      defaultValue="Choose..."
-                      onChange={this.onChangeBathRoom}
-                      value={this.state.bathrooms}
-                    >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </Form.Select>
-                  </Form.Group>
-                  <br></br>
                   <Form.Group className="mb-3">
                     <Form.Label>Price</Form.Label>
                     <Form.Control
@@ -208,6 +233,17 @@ class UpdateRoom extends Component {
                     />
                   </Form.Group>
                   <br></br>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Size (in SQft.)</Form.Label>
+                    <Form.Control
+                      controlId="formGroupEmail"
+                      type="text"
+                      placeholder="Size in SQ.ft"
+                      onChange={this.onChangeSize}
+                      value={this.state.size}
+                    />
+                  </Form.Group>
+                  <br></br>
 
                   <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Room Image</Form.Label>
@@ -215,7 +251,7 @@ class UpdateRoom extends Component {
                   </Form.Group>
                   <br></br>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <image
+                    <img
                       alt="Image Not Found"
                       height="200"
                       width="250"
@@ -224,7 +260,7 @@ class UpdateRoom extends Component {
                         e.target.onerror = null;
                         e.target.src = this.state.image;
                       }}
-                    ></image>
+                    />
                   </Form.Group>
                   <br></br>
                   <Button
@@ -253,7 +289,7 @@ class UpdateRoom extends Component {
             height: "570px",
             marginLeft: "60%",
             marginTop: "-69%",
-            alt:"image",
+            alt: "image",
           }}
           src={uroom2}
         />
