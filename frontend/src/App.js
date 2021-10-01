@@ -17,10 +17,18 @@ import ViewStatus from "./Jathusanan/ViewStatus";
 
 
 //Shanghavi
-import EmployeeList from "./Shanghavi/EmployeeList";
-import CreateEmployee from "./Shanghavi/CreateEmployee";
-import UpdateEmployee from "./Shanghavi/UpdateEmployee";
-import ViewEmployee from "./Shanghavi/ViewEmployee";
+import EmployeeList from './Shanghavi/EmployeeList';
+import CreateEmployee from './Shanghavi/CreateEmployee';
+import UpdateEmployee from './Shanghavi/UpdateEmployee';
+import ViewEmployee from './Shanghavi/ViewEmployee';
+import ViewExpense from './Shanghavi/ViewExpense';
+import AddExpense from './Shanghavi/AddExpense';
+import UpdateExpense from "./Shanghavi/UpdateExpense";
+import Reviewexpense from "./Shanghavi/Expensereport";
+
+// import Login from "./Shanghavi/Login/login.component";
+// import Register from "./Shanghavi/Login/register.component";
+// import Profile from "./Shanghavi/Login/profile.component";
 
 //Vithursan
 import ViewFooditem from "./Vithursan/ViewFooditem";
@@ -34,11 +42,15 @@ import ViewOrder from "./Vithursan/ViewOrder";
 import StripeButton from "./Vithursan/stripebutton.component";
 import PrintThisComponent from "./Vithursan/Print";
 
+import SearchResult from "./Shanghavi/Search";
+
 function App() {
   return (
     <div className="App">
       <Router>
-        <AdminHeader />
+        {/* <AdminHeader /> */}
+        
+        
         <div className="container">
           <Switch>
             <Route path="/visual" exact={true} component={ViewRoom} />
@@ -46,10 +58,6 @@ function App() {
             <Route path="/update/:id" exact={true} component={UpdateRoom} />
             <Route path="/AddRoom" exact={true} component={AddRoom} />
 
-            <Route path="/getemployees" component={EmployeeList}></Route>
-            <Route path="/addemployee/:id" component={CreateEmployee}></Route>
-            <Route path="/updateemployee/:id" component={UpdateEmployee}></Route>
-            <Route path="/viewemployee/:id" component={ViewEmployee}></Route>
          
             <Route path="/" exact={true} component={Home} />
             <Route path='/Fdash' exact={true} component={AdminDash}/>
@@ -57,6 +65,30 @@ function App() {
             <Route path='/view' exact={true} component={ViewFooditem}/>
             <Route path='/card' exact={true} component={FoodCard}/>
             <Route path='/fupdate/:id' exact={true} component={UpdateFood}/>
+
+
+    
+  
+            <Route path = "/getemployees" component = {EmployeeList}/>
+            <Route path = "/addemployee/:id" component = {CreateEmployee}/>
+            <Route path = "/updateemployee/:id" component = {UpdateEmployee}/>
+            <Route path = "/viewemployee/:id" component = {ViewEmployee}/>
+            <Route path='/viewexpense'  component={ViewExpense}/>
+            <Route path='/addexpense/:id'  component={AddExpense}/>
+            <Route path = "/updateexpense/:id" component = {UpdateExpense}/>
+            <Route path='/reviewexpense'  component={Reviewexpense}/>
+            <Route path = '/search' component = {SearchResult}/>
+            {/* <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile} />
+          */}
+
+
+
+           
+            <Route path='/addVenue' component={AddVenue}/>
+            <Route path='/venues' component={ViewVenues}/>
+            <Route path='/updateVenue/:id' component={UpdateVenue}/>
             <Route path='/order/:id' exact={true} component={OrderForm}/>
             <Route path='/vieworder' exact={true} component={ViewOrder}/>
             <Route path = "/Stripebutton" exact component = {StripeButton}/>
