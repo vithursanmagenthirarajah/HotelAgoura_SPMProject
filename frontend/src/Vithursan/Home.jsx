@@ -90,12 +90,12 @@ const Home = (props) => {
           </Col>
         <div></div>
           <Col>
-          <Link to="/getemployees">
+          <Link to="/viewexpense">
             <Card style={{ width: '20rem'}}>
             <Card.Img variant="top" src={expense}  />
             </Card>
            
-              <Card.Title> <Link to="/getemployees"><Button variant="secondary"  style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Expense Details</Button> </Link></Card.Title>
+              <Card.Title> <Link to="/viewexpense"><Button variant="secondary"  style={{width:"320px",height:"50px",align:"centre",backgroundColor:"#878c8d",color:"white",fontSize:"18px"}}>View Expense Details</Button> </Link></Card.Title>
               {/* <Card.Text>
                
               </Card.Text>
