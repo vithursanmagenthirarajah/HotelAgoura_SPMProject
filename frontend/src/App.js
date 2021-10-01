@@ -28,6 +28,10 @@ import AdminDash from './Vithursan/AdminDash';
 import UpdateFood from './Vithursan/UpdateFood';
 import Home from './Vithursan/Home';
 import AddFoodItem from './Vithursan/AddFoodItem';
+import OrderForm from "./Vithursan/OrderForm";
+import ViewOrder from "./Vithursan/ViewOrder";
+import StripeButton from "./Vithursan/stripebutton.component";
+import PrintThisComponent from "./Vithursan/Print";
 
 function App() {
   return (
@@ -48,7 +52,10 @@ function App() {
             <Route path='/view' exact={true} component={ViewFooditem}/>
             <Route path='/card' exact={true} component={FoodCard}/>
             <Route path='/fupdate/:id' exact={true} component={UpdateFood}/>
-
+            <Route path='/order/:id' exact={true} component={OrderForm}/>
+            <Route path='/vieworder' exact={true} component={ViewOrder}/>
+            <Route path = "/Stripebutton" exact component = {StripeButton}/>
+            
 
     
   
