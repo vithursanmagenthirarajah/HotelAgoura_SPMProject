@@ -4,24 +4,24 @@ const EXPENSE_API_BASE_URL = "http://localhost:8090/api/Expense";
 
 class ExpenseService {
 
-    getExpenses(){
+    getExpenses() {
         return axios.get(EXPENSE_API_BASE_URL + '/getexpenses');
     }
 
-    createExpense(expense){
-        return axios.post(EXPENSE_API_BASE_URL+ '/addexpense',expense);
-        
+    createExpense(expense) {
+        return axios.post(EXPENSE_API_BASE_URL + '/addexpense', expense);
+
     }
 
-    getExpenseById(expenseId){
+    getExpenseById(expenseId) {
         return axios.get(EXPENSE_API_BASE_URL + '/getexpenses/' + expenseId);
     }
 
-    updateExpense(expense, expenseId){
+    updateExpense(expense, expenseId) {
         return axios.put(EXPENSE_API_BASE_URL + '/updateexpense/' + expenseId, expense);
     }
 
-    deleteExpense(expenseId){
+    deleteExpense(expenseId) {
         return axios.delete(EXPENSE_API_BASE_URL + '/deleteexpense/' + expenseId);
     }
 }

@@ -26,9 +26,7 @@ import AddExpense from './Shanghavi/AddExpense';
 import UpdateExpense from "./Shanghavi/UpdateExpense";
 import Reviewexpense from "./Shanghavi/Expensereport";
 
-// import Login from "./Shanghavi/Login/login.component";
-// import Register from "./Shanghavi/Login/register.component";
-// import Profile from "./Shanghavi/Login/profile.component";
+
 
 //Vithursan
 import ViewFooditem from "./Vithursan/ViewFooditem";
@@ -44,16 +42,16 @@ import OrderForm from "./Vithursan/OrderForm";
 import ViewOrder from "./Vithursan/ViewOrder";
 import StripeButton from "./Vithursan/stripebutton.component";
 import PrintThisComponent from "./Vithursan/Print";
+import CustomerPage from "./Vithursan/CustomerPage";
 
-import SearchResult from "./Shanghavi/Search";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <AdminHeader />
-        
-        
+
+
         <div className="container">
           <Switch>
             <Route path="/visual" exact={true} component={ViewRoom} />
@@ -61,44 +59,36 @@ function App() {
             <Route path="/update/:id" exact={true} component={UpdateRoom} />
             <Route path="/AddRoom" exact={true} component={AddRoom} />
 
-         
+
             <Route path="/" exact={true} component={Home} />
-            <Route path='/Fdash' exact={true} component={AdminDash}/>
-            <Route path='/add' exact={true} component={AddFoodItem}/>
-            <Route path='/view' exact={true} component={ViewFooditem}/>
-            <Route path='/card' exact={true} component={FoodCard}/>
-            <Route path='/fupdate/:id' exact={true} component={UpdateFood}/>
-            <Route path='/order/:id' exact={true} component={OrderForm}/>
-            <Route path='/vieworder' exact={true} component={ViewOrder}/>
-            <Route path = "/Stripebutton" exact component = {StripeButton}/>
+            <Route path='/Fdash' exact={true} component={AdminDash} />
+            <Route path='/add' exact={true} component={AddFoodItem} />
+            <Route path='/view' exact={true} component={ViewFooditem} />
+            <Route path='/card' exact={true} component={FoodCard} />
+            <Route path='/fupdate/:id' exact={true} component={UpdateFood} />
+            <Route path='/order/:id' exact={true} component={OrderForm} />
+            <Route path='/vieworder' exact={true} component={ViewOrder} />
+            <Route path="/Stripebutton" exact component={StripeButton} />
+            <Route path="/customer" exact component={CustomerPage} />
+
+
+            <Route path="/getemployees" component={EmployeeList} />
+            <Route path="/addemployee/:id" component={CreateEmployee} />
+            <Route path="/updateemployee/:id" component={UpdateEmployee} />
+            <Route path="/viewemployee/:id" component={ViewEmployee} />
+            <Route path='/viewexpense' component={ViewExpense} />
+            <Route path='/addexpense/:id' component={AddExpense} />
+            <Route path="/updateexpense/:id" component={UpdateExpense} />
+            <Route path='/reviewexpense' component={Reviewexpense} />
             
 
-    
-  
-            <Route path = "/getemployees" component = {EmployeeList}/>
-            <Route path = "/addemployee/:id" component = {CreateEmployee}/>
-            <Route path = "/updateemployee/:id" component = {UpdateEmployee}/>
-            <Route path = "/viewemployee/:id" component = {ViewEmployee}/>
-            <Route path='/viewexpense'  component={ViewExpense}/>
-            <Route path='/addexpense/:id'  component={AddExpense}/>
-            <Route path = "/updateexpense/:id" component = {UpdateExpense}/>
-            <Route path='/reviewexpense'  component={Reviewexpense}/>
-            <Route path = '/search' component = {SearchResult}/>
-            {/* <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
-          */}
+            <Route path='/addVenue' component={AddVenue} />
+            <Route path='/venues' component={ViewVenues} />
+            <Route path='/updateVenue/:id' component={UpdateVenue} />
+            <Route path='/viewVenues' component={VenueDisplay} />
+            <Route path='/viewVenue/:id' component={VenueBooking} />
+            <Route path='/finalizeHall/:id' component={FinalizeReservation} />
 
-
-
-           
-            <Route path='/addVenue' component={AddVenue}/>
-            <Route path='/venues' component={ViewVenues}/>
-            <Route path='/updateVenue/:id' component={UpdateVenue}/>
-            <Route path='/viewVenues' component={VenueDisplay}/>
-            <Route path='/viewVenue/:id' component={VenueBooking}/>
-            <Route path='/finalizeHall/:id' component={FinalizeReservation}/>
-           
 
             <Route path="/addVenue" component={AddVenue} />
             <Route path="/venues" component={ViewVenues} />

@@ -20,7 +20,7 @@ public class Order {
 	private String name;
 
 	@Column(name = "HomeNo")
-	private String hno;
+	private String no;
 	
 	@Column(name = "street")
 	private String street;
@@ -30,6 +30,12 @@ public class Order {
 	
 	@Column(name = "phone_no")
 	private String phoneno;
+	
+	@Column(name = "Food_name")
+	private String foodItemName;
+	
+	@Column(name = "price")
+	private String price;
 	
 	@Column(name = "paymrnt_method")
 	private String payment;
@@ -41,14 +47,17 @@ public class Order {
 	}
 
 
-	public Order(long id, String name, String hno, String street, String city, String phoneno, String payment) {
+	public Order(long id, String name, String no, String street, String city, String phoneno, String foodItemName,
+			String price, String payment) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.hno = hno;
+		this.no = no;
 		this.street = street;
 		this.city = city;
 		this.phoneno = phoneno;
+		this.foodItemName = foodItemName;
+		this.price = price;
 		this.payment = payment;
 	}
 
@@ -74,12 +83,12 @@ public class Order {
 
 
 	public String getNo() {
-		return hno;
+		return no;
 	}
 
 
-	public void setNo(String hno) {
-		this.hno = hno;
+	public void setNo(String no) {
+		this.no = no;
 	}
 
 
@@ -113,6 +122,26 @@ public class Order {
 	}
 
 
+	public String getFoodItemName() {
+		return foodItemName;
+	}
+
+
+	public void setFoodItemName(String foodItemName) {
+		this.foodItemName = foodItemName;
+	}
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+
 	public String getPayment() {
 		return payment;
 	}
@@ -121,7 +150,8 @@ public class Order {
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
-	
+
+
 	
 	
 	

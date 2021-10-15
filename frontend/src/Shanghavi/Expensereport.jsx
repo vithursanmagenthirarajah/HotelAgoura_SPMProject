@@ -7,66 +7,66 @@ class ViewExpense extends Component {
         super(props)
 
         this.state = {
-                expenses: []
+            expenses: []
         }
-        
+
     }
 
-   
 
-    componentDidMount(){
+
+    componentDidMount() {
         ExpenseService.getExpenses().then((res) => {
-            this.setState({ expenses: res.data});
+            this.setState({ expenses: res.data });
         });
     }
 
-    
+
 
     render() {
         return (
             <div>
                 <br></br>
-              
-                 <h2 className="text-center" style={{ color:"#053b4b"}}>Expense Report</h2>
-                
-                 <Print />
-                 <br></br>
-                 
-              
-                 <div className = "row">
-                        <table  className = "table table-striped table-bordered " style={{width:"70%",marginLeft: "150px"}}>
 
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Month</th>
-                                    <th>Expense Type</th>
-                                     <th>Description</th>
-                                    <th>Amount</th>
-                                   
-                                    
-                                 </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.expenses.map(
-                                        expense => 
-                                        <tr key = {expense.id}>
-                                            <td> {expense.date} </td> 
-                                            <td> {expense.month} </td> 
-                                             <td> {expense.expensetype} </td>   
-                                             <td> {expense.description}</td> 
-                                             <td> {expense.amount}</td>
-                                             
+                <h2 className="text-center" style={{ color: "#053b4b" }}>Expense Report</h2>
+
+                <Print />
+                <br></br>
+
+
+                <div className="row">
+                    <table className="table table-striped table-bordered " style={{ width: "70%", marginLeft: "150px" }}>
+
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Month</th>
+                                <th>Expense Type</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.expenses.map(
+                                    expense =>
+                                        <tr key={expense.id}>
+                                            <td> {expense.date} </td>
+                                            <td> {expense.month} </td>
+                                            <td> {expense.expensetype} </td>
+                                            <td> {expense.description}</td>
+                                            <td> {expense.amount}</td>
+
                                         </tr>
-                                    )
-                                }
-                            </tbody>
-                          
-                        </table>
-                      
-                 </div>
-               
+                                )
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>
+
             </div>
         )
     }

@@ -7,10 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default class FinalizeReservation extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        
+
 
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeAmount = this.onChangeAmount.bind(this);
@@ -20,93 +20,85 @@ export default class FinalizeReservation extends Component {
 
         this.onSubmit = this.onSubmit.bind(this);
 
-        this.state={
-            customerName:'',
-            amount:'',
-            date:new Date(),
-            telNo:'',
-            venueName:''
+        this.state = {
+            customerName: '',
+            amount: '',
+            date: new Date(),
+            telNo: '',
+            venueName: ''
         }
 
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios
-            .get("http://localhost:8090/api/venue/venues/"+this.props.match.params.id)
-            .then((res)=>{
+            .get("http://localhost:8090/api/venue/venues/" + this.props.match.params.id)
+            .then((res) => {
                 console.log(res);
                 this.setState({
-                    amount:res.data.price,
-                    venueName:res.data.name
+                    amount: res.data.price,
+                    venueName: res.data.name
                 })
             })
-            .catch((err)=> console.log(err))
+            .catch((err) => console.log(err))
     }
 
-    onChangeName(e){
+    onChangeName(e) {
         this.setState({
-            customerName:e.target.value
+            customerName: e.target.value
         })
     }
 
-    onChangeAmount(e){
+    onChangeAmount(e) {
         this.setState({
-            amount:e.target.value
+            amount: e.target.value
         })
     }
 
-    onChangeDate(e){
+    onChangeDate(e) {
         this.setState({
-            date:e.target.value
+            date: e.target.value
         })
     }
 
-    onChangeTelNo(e){
+    onChangeTelNo(e) {
         this.setState({
-            telNo:e.target.value
+            telNo: e.target.value
         })
     }
 
-    onChangeVenue(e){
+    onChangeVenue(e) {
         this.setState({
-            venueName:e.target.value
+            venueName: e.target.value
         })
     }
 
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
 
         const reservation = {
-            "customer":this.state.customerName,
-            "amount":this.state.amount,
-            "date":this.state.date,
-            "tel_no":this.state.telNo,
-            "venue_name":this.state.venueName,
+            "customer": this.state.customerName,
+            "amount": this.state.amount,
+            "date": this.state.date,
+            "tel_no": this.state.telNo,
+            "venue_name": this.state.venueName,
         }
 
-        // formData.append("customer", this.state.customerName);
-        // formData.append("amount", this.state.amount);
-        // formData.append("date", this.state.date);
-        // formData.append("tel_no", this.state.telNo);
-        // formData.append("venue_name", this.state.venueName);
-
-        // for (var value of reservation.values()){
-        //     console.log(value);
-        // }
+      
         console.log(reservation);
-        axios.post("http://localhost:8090/api/reservation/addReservation",reservation).then((res)=>{
+        axios.post("http://localhost:8090/api/reservation/addReservation", reservation).then((res) => {
             console.log(res);
             alert('Reservation added successfully');
-            window.location.href='/viewVenues'
+            window.location.href = '/viewVenues'
         })
 
-        this.setState={
-            customerName:'',
-            amount:'',
-            date:new Date(),
-            telNo:'',
-            venueName:''
+        this.setState = {
+            customerName: '',
+            amount: '',
+            date: new Date(),
+            telNo: '',
+            venueName: ''
         }
 
     }
@@ -117,40 +109,40 @@ export default class FinalizeReservation extends Component {
     render() {
         return (
             <div>
-                <br/>
-                <h1 style={{color:"#0e7794", marginTop:'2rem', fontWeight:'bold'}}>Reservation Details</h1>
-                <br/>
-                <div className="card col-md-6 offset-md-3 offset-md-3" style={{padding : '1rem', borderRadius:15}}>
-                <Form onSubmit={this.onSubmit}>
-                    <Form.Group className = "mb-3" controlId = "formBasicName">
-                        <Form.Label>Name of the Customer</Form.Label>
-                        <Form.Control type = "text" pattern="\w+.{5,}.[/\D/g]" 
-                            title="customer name should not contain numbers or symbols and must be larger than 3 characters."
-                            placeholder = "Enter your name" onChange = {this.onChangeName} value = {this.state.customerName} required/>
-                    </Form.Group>
-                    <Form.Group className = "mb-3" controlId = "formBasicPrice">
-                        <Form.Label>Price</Form.Label>
-                        <Form.Control type = "text" placeholder = "Enter the price" onChange = {this.onChangeAmount} value = {this.state.amount} required/>
-                    </Form.Group>
-                    <Form.Group className = "mb-3" controlId = "formBasicVenue">
-                        <Form.Label>Venue</Form.Label>
-                        <Form.Control type = "text" placeholder = "Enter the Venue Name" onChange = {this.onChangeVenue} value = {this.state.venueName} required/>
-                    </Form.Group>
-                    <Form.Group className = "mb-3" controlId = "formBasicPrice">
-                        <Form.Label>Contact Number</Form.Label>
-                        <Form.Control type = "text" pattern="^\d{10}$" placeholder = "Enter your contact number" onChange = {this.onChangeTelNo} value = {this.state.telNo} required/>
-                    </Form.Group>
-                    <Form.Group className = "mb-3" controlId = "formBasicPhoneN0">
-                        <Form.Label>Contact Number</Form.Label>
-                        <DatePicker onChange={(date)=>this.setState({date:date})} dateFormat="yyyy-MM-dd" selected={this.state.date}/>
-                    </Form.Group>
+                <br />
+                <h1 style={{ color: "#0e7794", marginTop: '2rem', fontWeight: 'bold' }}>Reservation Details</h1>
+                <br />
+                <div className="card col-md-6 offset-md-3 offset-md-3" style={{ padding: '1rem', borderRadius: 15 }}>
+                    <Form onSubmit={this.onSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label>Name of the Customer</Form.Label>
+                            <Form.Control type="text" pattern="\w+.{5,}.[/\D/g]"
+                                title="customer name should not contain numbers or symbols and must be larger than 3 characters."
+                                placeholder="Enter your name" onChange={this.onChangeName} value={this.state.customerName} required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPrice">
+                            <Form.Label>Price</Form.Label>
+                            <Form.Control type="text" placeholder="Enter the price" onChange={this.onChangeAmount} value={this.state.amount} required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicVenue">
+                            <Form.Label>Venue</Form.Label>
+                            <Form.Control type="text" placeholder="Enter the Venue Name" onChange={this.onChangeVenue} value={this.state.venueName} required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPrice">
+                            <Form.Label>Contact Number</Form.Label>
+                            <Form.Control type="text" pattern="^\d{10}$" placeholder="Enter your contact number" onChange={this.onChangeTelNo} value={this.state.telNo} required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPhoneN0">
+                            <Form.Label>Contact Number</Form.Label>
+                            <DatePicker onChange={(date) => this.setState({ date: date })} dateFormat="yyyy-MM-dd" selected={this.state.date} />
+                        </Form.Group>
 
 
-                    <Button style = {{backgroundColor:"#053b4b", color:"white", borderRadius:15}} variant = "primary" type = "submit">Make Reservation</Button>
-                    
-                </Form>
+                        <Button style={{ backgroundColor: "#053b4b", color: "white", borderRadius: 15 }} variant="primary" type="submit">Make Reservation</Button>
+
+                    </Form>
                 </div>
-                
+
             </div>
         )
     }

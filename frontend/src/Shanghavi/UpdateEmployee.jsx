@@ -12,9 +12,9 @@ class UpdateEmployeeComponent extends Component {
             dob: '',
             contactno: '',
             emailId: '',
-            address:'',
+            address: '',
             position: '',
-            department:'',
+            department: '',
         }
 
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
@@ -28,8 +28,8 @@ class UpdateEmployeeComponent extends Component {
         this.updateEmployee = this.updateEmployee.bind(this);
     }
 
-    componentDidMount(){
-        EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
+    componentDidMount() {
+        EmployeeService.getEmployeeById(this.state.id).then((res) => {
             let employee = res.data;
             this.setState({
                 firstName: employee.firstName,
@@ -47,45 +47,45 @@ class UpdateEmployeeComponent extends Component {
 
     updateEmployee = (e) => {
         e.preventDefault();
-        let employee = {firstName: this.state.firstName, lastName: this.state.lastName,dob: this.state.dob,contactno: this.state.contactno, emailId: this.state.emailId,address: this.state.address,position: this.state.position,department: this.state.department};
+        let employee = { firstName: this.state.firstName, lastName: this.state.lastName, dob: this.state.dob, contactno: this.state.contactno, emailId: this.state.emailId, address: this.state.address, position: this.state.position, department: this.state.department };
         console.log('employee => ' + JSON.stringify(employee));
         console.log('id => ' + JSON.stringify(this.state.id));
-        EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+        EmployeeService.updateEmployee(employee, this.state.id).then(res => {
             this.props.history.push('/getemployees');
         });
     }
 
 
-    changeFirstNameHandler= (event) => {
-        this.setState({firstName: event.target.value});
+    changeFirstNameHandler = (event) => {
+        this.setState({ firstName: event.target.value });
     }
 
-    changeLastNameHandler= (event) => {
-        this.setState({lastName: event.target.value});
+    changeLastNameHandler = (event) => {
+        this.setState({ lastName: event.target.value });
     }
 
-    changedobHandler= (event) => {
-        this.setState({dob: event.target.value});
+    changedobHandler = (event) => {
+        this.setState({ dob: event.target.value });
     }
-    changecontactnoHandler= (event) => {
-        this.setState({contactno: event.target.value});
-    }
-
-    changeemailIdHandler= (event) => {
-        this.setState({emailId: event.target.value});
-    }
-    changeaddressHandler= (event) => {
-        this.setState({address: event.target.value});
-    }
-    changepositionHandler= (event) => {
-        this.setState({position: event.target.value});
-    }
-    changedepartmentHandler= (event) => {
-        this.setState({department: event.target.value});
+    changecontactnoHandler = (event) => {
+        this.setState({ contactno: event.target.value });
     }
 
+    changeemailIdHandler = (event) => {
+        this.setState({ emailId: event.target.value });
+    }
+    changeaddressHandler = (event) => {
+        this.setState({ address: event.target.value });
+    }
+    changepositionHandler = (event) => {
+        this.setState({ position: event.target.value });
+    }
+    changedepartmentHandler = (event) => {
+        this.setState({ department: event.target.value });
+    }
 
-    cancel(){
+
+    cancel() {
         this.props.history.push('/getemployees');
     }
 
@@ -94,78 +94,78 @@ class UpdateEmployeeComponent extends Component {
         return (
             <div>
                 <br></br>
-                   <div className = "container">
-                        <div className = "row">
-                            <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h4 className="text-center" style={{color:"#053b4b"}}>Update Employee Details</h4>
-                                <div className = "card-body">
-                                    <form>
-                                        <div className = "form-group">
-                                            <label> First Name </label>
-                                            <input placeholder="First Name" name="firstName" className="form-control" 
-                                                value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Last Name </label>
-                                            <input placeholder="Last Name" name="lastName" className="form-control" 
-                                                value={this.state.lastName} onChange={this.changeLastNameHandler}/>
-                                        </div>
-                                        <br></br>
-                                       
-                                        <div className = "form-group">
-                                            <label> Date of birth</label>
-                                            <input type="date" placeholder="date of birth" name="date of birth" className="form-control" 
-                                                value={this.state.dob} onChange={this.changedobHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Contact Number </label>
-                                            <input placeholder="Contact Number" name="Contact Number" className="form-control" 
-                                                value={this.state.contactno} onChange={this.changecontactnoHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Email Id </label>
-                                            <input placeholder="Email Address" name="emailId" className="form-control" 
-                                                value={this.state.emailId} onChange={this.changeemailIdHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Address </label>
-                                            <input placeholder="Address" name="Address" className="form-control" 
-                                                value={this.state.address} onChange={this.changeaddressHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Position </label>
-                                            <input placeholder="Position" name="Position" className="form-control" 
-                                                value={this.state.position} onChange={this.changepositionHandler}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group" >
-                                            <label> Department </label>
-                                            <select  className="form-control" value={this.state.department} onChange={this.changedepartmentHandler}>
-                                            <input placeholder="Department" name="Department"  />     
-                                                <option>choose</option>
-                                                <option>HR</option>
-                                                <option>Account</option>
-                                                <option>Food</option>
-                                                <option>Room</option>
-                                                </select>
-    
-                                        </div>
-                                        <br></br>
+                <div className="container">
+                    <div className="row">
+                        <div className="card col-md-6 offset-md-3 offset-md-3">
+                            <h4 className="text-center" style={{ color: "#053b4b" }}>Update Employee Details</h4>
+                            <div className="card-body">
+                                <form>
+                                    <div className="form-group">
+                                        <label> First Name </label>
+                                        <input placeholder="First Name" name="firstName" className="form-control"
+                                            value={this.state.firstName} onChange={this.changeFirstNameHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Last Name </label>
+                                        <input placeholder="Last Name" name="lastName" className="form-control"
+                                            value={this.state.lastName} onChange={this.changeLastNameHandler} />
+                                    </div>
+                                    <br></br>
+
+                                    <div className="form-group">
+                                        <label> Date of birth</label>
+                                        <input type="date" placeholder="date of birth" name="date of birth" className="form-control"
+                                            value={this.state.dob} onChange={this.changedobHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Contact Number </label>
+                                        <input placeholder="Contact Number" name="Contact Number" className="form-control"
+                                            value={this.state.contactno} onChange={this.changecontactnoHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Email Id </label>
+                                        <input placeholder="Email Address" name="emailId" className="form-control"
+                                            value={this.state.emailId} onChange={this.changeemailIdHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Address </label>
+                                        <input placeholder="Address" name="Address" className="form-control"
+                                            value={this.state.address} onChange={this.changeaddressHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Position </label>
+                                        <input placeholder="Position" name="Position" className="form-control"
+                                            value={this.state.position} onChange={this.changepositionHandler} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group" >
+                                        <label> Department </label>
+                                        <select className="form-control" value={this.state.department} onChange={this.changedepartmentHandler}>
+                                            <input placeholder="Department" name="Department" />
+                                            <option>choose</option>
+                                            <option>HR</option>
+                                            <option>Account</option>
+                                            <option>Food</option>
+                                            <option>Room</option>
+                                        </select>
+
+                                    </div>
+                                    <br></br>
 
 
-                                        <button className="btn" onClick={this.updateEmployee} style={{marginLeft: "250px",backgroundColor:"#0186ac", color:"white"}}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
-                                    </form>
-                                </div>
+                                    <button className="btn" onClick={this.updateEmployee} style={{ marginLeft: "250px", backgroundColor: "#0186ac", color: "white" }}>Save</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                   </div>
+                </div>
             </div>
         )
     }

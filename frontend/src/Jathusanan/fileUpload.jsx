@@ -31,7 +31,7 @@ class Fileupload extends React.Component {
       .put(file);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
+      (snapshot) => { },
       (error) => {
         console.log(error);
       },

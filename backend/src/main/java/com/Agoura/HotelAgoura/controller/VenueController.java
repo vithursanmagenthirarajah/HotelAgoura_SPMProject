@@ -57,25 +57,7 @@ public class VenueController {
 	@Value("${file.upload-dir}")
 	String FILE_DIRECTORY;
 	
-//	@PostMapping("/addVenue")
-//	public Venue saveVenue(@RequestParam("Img") MultipartFile multipartfile, @ModelAttribute Venue venue) throws IOException{
-//		
-//		
-//		File myFile = new File(FILE_DIRECTORY + multipartfile.getOriginalFilename());
-//		
-//		venue.setImg(myFile.toString());
-//		
-//		
-//		myFile.createNewFile();
-//		FileOutputStream fos = new FileOutputStream(myFile);
-//		
-//		fos.write(multipartfile.getBytes());
-//		fos.close();
-//		
-//		
-//		
-//		return repo.save(venue);
-//	}
+
 	
 	@GetMapping("/venues/{id}")
 	public ResponseEntity<Venue> getVenue(@PathVariable int id){
@@ -162,12 +144,5 @@ public class VenueController {
 		
 	}
 	
-//	@GetMapping("/Images/{id}")
-//	public String getImages(@PathVariable int id) {
-//		Venue venue = repo.findById(id)
-//						.orElseThrow(()-> new ResourceNotFoundException("Venue Not Found"));
-//		
-//		return FILE_DIRECTORY + venue.getImg();
-//	}
 
 }

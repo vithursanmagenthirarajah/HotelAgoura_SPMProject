@@ -37,7 +37,7 @@ const Navbar = (props) => {
             <br></br>
 
             <li className="navbar-item">
-              <Link to="/Fdash"className="nav-link">DINNING</Link>
+              <Link to="/Fdash" className="nav-link">DINNING</Link>
             </li>
 
             <br></br>

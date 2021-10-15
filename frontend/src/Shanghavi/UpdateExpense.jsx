@@ -9,11 +9,11 @@ class UpdateExpense extends Component {
         this.state = {
             id: this.props.match.params.id,
             date: '',
-            month:'',
+            month: '',
             expensetype: '',
             amount: '',
             description: '',
-           
+
         }
 
         this.changeDateHandler = this.changeDateHandler.bind(this);
@@ -24,12 +24,12 @@ class UpdateExpense extends Component {
         this.updateExpense = this.updateExpense.bind(this);
     }
 
-    componentDidMount(){
-        ExpenseService.getExpenseById(this.state.id).then( (res) =>{
+    componentDidMount() {
+        ExpenseService.getExpenseById(this.state.id).then((res) => {
             let expense = res.data;
             this.setState({
                 date: expense.date,
-                month:expense.month,
+                month: expense.month,
                 expensetype: expense.expensetype,
                 amount: expense.amount,
                 description: expense.description,
@@ -40,65 +40,65 @@ class UpdateExpense extends Component {
 
     updateExpense = (e) => {
         e.preventDefault();
-        let expense = {date: this.state.date,month: this.state.month, expensetype: this.state.expensetype,amount: this.state.amount,description: this.state.description};
+        let expense = { date: this.state.date, month: this.state.month, expensetype: this.state.expensetype, amount: this.state.amount, description: this.state.description };
         console.log('expense => ' + JSON.stringify(expense));
         console.log('id => ' + JSON.stringify(this.state.id));
-        ExpenseService.updateExpense(expense, this.state.id).then( res => {
+        ExpenseService.updateExpense(expense, this.state.id).then(res => {
             this.props.history.push('/viewexpense');
         });
     }
 
 
-    changeDateHandler= (event) => {
-        this.setState({date: event.target.value});
+    changeDateHandler = (event) => {
+        this.setState({ date: event.target.value });
     }
-    changeMonthHandler= (event) => {
-        this.setState({month: event.target.value});
+    changeMonthHandler = (event) => {
+        this.setState({ month: event.target.value });
     }
-    changeExpenseTypeHandler= (event) => {
-        this.setState({expensetype: event.target.value});
+    changeExpenseTypeHandler = (event) => {
+        this.setState({ expensetype: event.target.value });
     }
-    changeAmountHandler= (event) => {
-        this.setState({amount: event.target.value});
+    changeAmountHandler = (event) => {
+        this.setState({ amount: event.target.value });
     }
-    changeDescriptionHandler= (event) => {
-        this.setState({description: event.target.value});
+    changeDescriptionHandler = (event) => {
+        this.setState({ description: event.target.value });
     }
-  
-    cancel(){
-        
+
+    cancel() {
+
         this.props.history.push('/viewexpense');
     }
 
-  
+
 
 
     render() {
         return (
             <div>
                 <br></br>
-                   <div className = "container">
-                        <div className = "row">
-                            <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h4 className="text-center" style={{color:"#053b4b"}}>Update Employee Details</h4>
-                                <div className = "card-body">
-                                    <form>
-                                
-                           
-                                        <div className = "form-group">
-                                            <label>  Date </label>
-                                            <input type="date" placeholder="Enter Date" name="date" className="form-control" 
-                                            value={this.state.date} onChange={this.changeDateHandler} required={true}/>
-                                         
-                                        </div>
-                                        <br></br>
-                                     
-                                        <div className = "form-group">
-                                            <label>  Month </label>
-                                            <select
-                                                input type="text"  name="month" className="form-control"  
-                                             value={this.state.month} onChange={this.changeMonthHandler} required={true}>
-                                           
+                <div className="container">
+                    <div className="row">
+                        <div className="card col-md-6 offset-md-3 offset-md-3">
+                            <h4 className="text-center" style={{ color: "#053b4b" }}>Update Employee Details</h4>
+                            <div className="card-body">
+                                <form>
+
+
+                                    <div className="form-group">
+                                        <label>  Date </label>
+                                        <input type="date" placeholder="Enter Date" name="date" className="form-control"
+                                            value={this.state.date} onChange={this.changeDateHandler} required={true} />
+
+                                    </div>
+                                    <br></br>
+
+                                    <div className="form-group">
+                                        <label>  Month </label>
+                                        <select
+                                            input type="text" name="month" className="form-control"
+                                            value={this.state.month} onChange={this.changeMonthHandler} required={true}>
+
 
                                             <option >Choose ..</option>
                                             <option>January</option>
@@ -113,38 +113,38 @@ class UpdateExpense extends Component {
                                             <option>October</option>
                                             <option>November</option>
                                             <option>December</option>
-                                            </select>
-              
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Expense Type</label>
-                                            <input placeholder="Enter Expense Type" name="expensetype" className="form-control" 
-                                                value={this.state.expensetype} onChange={this.changeExpenseTypeHandler} required={true}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label> Amount </label>
-                                            <input placeholder="Enter Amount" name="amount" className="form-control" 
-                                                value={this.state.amount} onChange={this.changeAmountHandler} required={true}/>
-                                        </div>
-                                        <br></br>
-                                        <div className = "form-group">
-                                            <label>Description </label>
-                                            <input placeholder="Enter Description" name="description" className="form-control" 
-                                                value={this.state.description} onChange={this.changeDescriptionHandler} required={true}/>
-                                        </div>
-                                        <br></br>
+                                        </select>
+
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Expense Type</label>
+                                        <input placeholder="Enter Expense Type" name="expensetype" className="form-control"
+                                            value={this.state.expensetype} onChange={this.changeExpenseTypeHandler} required={true} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label> Amount </label>
+                                        <input placeholder="Enter Amount" name="amount" className="form-control"
+                                            value={this.state.amount} onChange={this.changeAmountHandler} required={true} />
+                                    </div>
+                                    <br></br>
+                                    <div className="form-group">
+                                        <label>Description </label>
+                                        <input placeholder="Enter Description" name="description" className="form-control"
+                                            value={this.state.description} onChange={this.changeDescriptionHandler} required={true} />
+                                    </div>
+                                    <br></br>
 
 
-                                        <button className="btn" onClick={this.updateExpense} style={{marginLeft: "250px",backgroundColor:"#0186ac", color:"white"}}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
-                                    </form>
-                                </div>
+                                    <button className="btn" onClick={this.updateExpense} style={{ marginLeft: "250px", backgroundColor: "#0186ac", color: "white" }}>Save</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                   </div>
+                </div>
             </div>
         )
     }

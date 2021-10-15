@@ -43,11 +43,7 @@ public class FoodItemController {
 	@Value("${file.upload-dir}")
 	String FILE_DIRECTORY;
 	
-	// Add food items
-//		@PostMapping("/add")
-//		public FoodItem createItem(@RequestBody FoodItem FoodItem) {
-//			return FoodItemRepository.save(FoodItem);
-//		}
+
 		
 		@PostMapping("/add")
 		public FoodItem fileUpload(@RequestParam("File") MultipartFile file,@ModelAttribute FoodItem FoodItem) throws IOException{
@@ -79,52 +75,6 @@ public class FoodItemController {
 			return ResponseEntity.ok(FItem);
 		}
 		
-//		// update Food Item
-//		
-//		@PutMapping("/update/{id}")
-//		public ResponseEntity<FoodItem> updateItem(@PathVariable Long id, @RequestBody FoodItem FoodItemDetails){
-//			FoodItem FItem = FoodItemRepository.findById(id) 
-//					.orElseThrow(() -> new ResourceNotFoundException("FoodItem not exist with id :" + id));
-//			
-//			FItem.setFoodItemName(FoodItemDetails.getFoodItemName());
-//			FItem.setPrice(FoodItemDetails.getPrice());
-//			FItem.setDescription(FoodItemDetails.getDescription());
-//			FItem.setCategory(FoodItemDetails.getCategory());
-//			FItem.setPath(FoodItemDetails.getPath());
-//			
-//			FoodItem updatedFoodItem = FoodItemRepository.save(FItem);
-//			return ResponseEntity.ok(updatedFoodItem);
-//		}
-		
-//		@PutMapping("/update/{id}")
-//		public FoodItem updateFood(@PathVariable("id") Long id, @ModelAttribute FoodItem FoodItem, @RequestParam("File") MultipartFile file) throws IOException{
-//			FoodItem FoodItem1 = FoodItemRepository.findById(id).get();
-//			if(Objects.nonNull(FoodItem.getFoodItemName()) && !"".equalsIgnoreCase(FoodItem.getFoodItemName())) {
-//				FoodItem1.setFoodItemName(FoodItem.getFoodItemName());
-//			}
-//			if(Objects.nonNull(FoodItem.getPrice()) && !"".equalsIgnoreCase(FoodItem.getPrice())) {
-//				FoodItem1.setPrice(FoodItem.getPrice());
-//			}
-//			if(Objects.nonNull(FoodItem.getDescription()) && !"".equalsIgnoreCase(FoodItem.getDescription())) {
-//				FoodItem1.setDescription(FoodItem.getDescription());
-//			}
-//			if(Objects.nonNull(FoodItem.getCategory()) && !"".equalsIgnoreCase(FoodItem.getCategory())) {
-//				FoodItem1.setCategory(FoodItem.getCategory());
-//			}
-//			File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
-//			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//			System.out.println(fileName);
-//			FoodItem1.setPath(fileName);
-//			
-//		    myFile.createNewFile();
-//			FileOutputStream fos =new FileOutputStream(myFile);
-//			fos.write(file.getBytes());
-//			fos.close();
-//			
-//			
-//			return FoodItemRepository.save(FoodItem1);
-//			
-//		}
 		
 		@PutMapping("/update/{id}")
 		public FoodItem updateFood(@PathVariable("id") Long id, @ModelAttribute FoodItem FoodItem, @RequestParam("File") MultipartFile file) throws IOException{
@@ -175,8 +125,7 @@ public class FoodItemController {
 
 		        if(searchKey!=null){
 
-//		            List result = repo.findAll((searchKey));
-//		            System.out.println(result);
+
 		            return FoodItemRepository.findAll(searchKey);
 
 		        }

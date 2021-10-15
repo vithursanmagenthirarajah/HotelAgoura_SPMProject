@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import { Link } from "react-router-dom";
-// import image from "./images/table.jpg";
+
 
 export default class ViewFooditem extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      //id: this.props.match.params.id,
       RoomStatus: [],
     };
   }
@@ -22,9 +20,7 @@ export default class ViewFooditem extends Component {
       .catch((error) => {
         console.log(error);
       });
-    // ItemService.getItemsById(this.state.id).then( res => {
-    //     this.setState({item: res.data});
-    // })
+
   }
 
   render() {
